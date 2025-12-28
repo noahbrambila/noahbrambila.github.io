@@ -1,9 +1,109 @@
 body {
-  margin: 0;
-  flex-direction: column;
-  display: flex;
-  justify-content: center; 
-  align-items: center;     
-  min-height: 100vh;       
-  text-align: center;
+    margin: 0;
+    padding: 0;
+    flex-direction: column;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', serif;
+    background-color: #F5F1E8;
+    color: #2C1810;
+    line-height: 1.8;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2em;
+}
+
+h1 {
+    font-size: 2.8em;
+    font-weight: 700;
+    color: #1A0F08;
+    margin-bottom: 0.4em;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    border-bottom: 3px solid #8B6F47;
+    padding-bottom: 0.3em;
+    display: inline-block;
+}
+
+h2 {
+    font-size: 1.4em;
+    font-weight: 400;
+    color: #3D2415;
+    margin-bottom: 1.5em;
+    letter-spacing: 0.01em;
+}
+
+p {
+    font-size: 1.15em;
+    line-height: 1.8;
+    color: #2C1810;
+    max-width: 800px;
+}
+
+a {
+    color: #6B4423;
+    text-decoration: underline;
+    font-weight: 500;
+}
+
+a:hover {
+    color: #8B6F47;
+    text-decoration: underline;
+}
+
+b {
+    font-weight: 700;
+    color: #1A0F08;
+    letter-spacing: 0.05em;
+}
+
+.social-links {
+    margin-top: 2.5em;
+    padding-top: 2em;
+    border-top: 2px solid #D4C4B0;
+    display: flex;
+    gap: 2em;
+    justify-content: center;
+}
+
+.social-link {
+    padding: 0.6em 1.5em;
+    background-color: #E8DCC8;
+    border: 2px solid #8B6F47;
+    border-radius: 4px;
+    font-size: 1em;
+    font-weight: 600;
+    color: #3D2415;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    background-color: #8B6F47;
+    color: #F5F1E8;
+    transform: translateY(-2px);
+}
+
+footer {
+    width: 100%;
+    padding: 1.5em 0;
+    background-color: #E8DCC8;
+    border-top: 3px solid #8B6F47;
+    margin-top: auto;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.95em;
+    color: #3D2415;
+    font-weight: 500;
 }
