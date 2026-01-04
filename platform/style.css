@@ -1,27 +1,9 @@
-@font-face {
-  font-family: 'Union Gothic';
-  src: url('../union_gothic-variable.ttf') format('truetype');
-  font-weight: 1 999; /* Variable font weight range */
-  font-style: normal;
-  font-display: swap; /* Prevents invisible text during load */
-}
-
-body {
-    margin: 0;
-    padding: 0;
-    line-height: 20px;
-    font-family: Georgia, 'Times New Roman', serif;
-    background-color: #ffffff;
-    color: #ffffff;
-}
-
 /* Category headers - larger and more prominent */
 .platform-item.platform-category {
     margin-top: 2.5em;
     margin-bottom: 1.5em;
     border-left: 8px solid #004aad;
     background-color: rgba(0, 74, 173, 0.15);
-    line-height: 20px;
 }
 
 .platform-item.platform-category .platform-title {
@@ -30,28 +12,23 @@ body {
     color: #004aad;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    line-height: 20px;
 }
 
 .platform-item.platform-category .platform-header {
     padding: 1.2em 2em;
-    line-height: 20px;
 }
 
 .platform-item.platform-category .platform-header:hover {
     background-color: rgba(0, 74, 173, 0.2);
-    line-height: 20px;
 }
 
 .platform-item.platform-category .caret {
     font-size: 1.5em;
     font-weight: bold;
-    line-height: 20px;
 }
 
 .platform-item.platform-category .platform-content p {
     font-size: 1.15em;
     font-weight: 500;
-    line-height: 20px;
     color: #1A0F08;
 }

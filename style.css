@@ -1,9 +1,9 @@
 @font-face {
   font-family: 'Union Gothic';
   src: url('union_gothic-variable.ttf') format('truetype');
-  font-weight: 1 999; /* Variable font weight range */
+  font-weight: 1 999;
   font-style: normal;
-  font-display: swap; /* Prevents invisible text during load */
+  font-display: swap;
 }
 
 body {
@@ -11,8 +11,8 @@ body {
     padding: 0;
     font-family: Georgia, 'Times New Roman', serif;
     background-color: #ffffff;
-    color: #ffffff;
-    line-height: 48px;
+    color: #2C1810;
+    line-height: 1.6;
 }
 
 .sticky-header {
@@ -213,12 +213,11 @@ h2 {
 }
 
 p {
-    font-size: 16px;
-    line-height: 0.8px;
+    font-size: 1em;
+    line-height: 1.6;
     color: #2C1810;
     max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
 }
 
 a {
@@ -277,9 +276,6 @@ footer p {
     display: none !important;
 }
 
-body {
-    top: 0 !important;
-}
 
 @media (max-width: 768px) {
     footer {
@@ -306,7 +302,6 @@ body {
 }
 
 .about-content h3 {
-    font-size: 48px;
     font-family: 'Union Gothic', Georgia, 'Times New Roman', serif;
     font-size: 2em;
     font-weight: 700;
@@ -317,7 +312,7 @@ body {
 
 .about-content p {
     font-size: 1.1em;
-    line-height: 20px;
+    line-height: 1.6;
     color: #2C1810;
     margin-bottom: 1.5em;
 }
@@ -345,26 +340,6 @@ body {
     background-color: #a8e85a;
     transform: translateY(-2px);
     box-shadow: 0 6px 16px rgba(193, 255, 114, 0.4);
-}
-
-.learn-more-btn {
-    display: inline-block;
-    padding: 0.8em 2em;
-    background-color: #1B3A5F;
-    color: #F5F1E8;
-    border: 2px solid #0F2340;
-    border-radius: 4px;
-    font-size: 1.05em;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
-
-.learn-more-btn:hover {
-    background-color: #0F2340;
-    color: #FFFFFF;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .about-image {
