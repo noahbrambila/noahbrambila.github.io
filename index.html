@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Noah for ASB</title>
+    <meta name="description" content="Noah Brambila - Explore my projects and experience in web development.">
+    <meta name="theme-color" content="#004aad">
+    <title>Noah Brambila</title>
     
     <!-- Favicons -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -12,110 +14,61 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     
     <!-- Open Graph / Social Media -->
-    <meta property="og:title" content="Noah Brambila for ASB">
-    <meta property="og:description" content="Vote Noah Brambila for ASB Representative. Experience, dedication, and student engagement.">
-    <meta property="og:image" content="https://noahbrambila.github.io/social-preview.png">
+    <meta property="og:title" content="Noah Brambila - Portfolio">
+    <meta property="og:description" content="Explore my projects and experience.">
     <meta property="og:url" content="https://noahbrambila.github.io">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://noahbrambila.github.io/social-preview.png">
 
+    <!-- Preload critical resources -->
+    <link rel="preload" href="union_gothic-variable.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="style.css" as="style">
+    
     <link rel="stylesheet" href="style.css">
+    
+    <!-- Three.js Library - defer for non-blocking -->
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- Three.js GLTF Loader -->
+    <script defer src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
 </head>
 <body>
-    <!-- Popup Modal
-    <div id="popup-modal" class="popup-overlay">
-        <div class="popup-content">
-            <button class="popup-close" aria-label="Close Popup">&times;</button>
-            <h2>Copy & Share!</h2>
-            <img src="qr-code.png" alt="QR Code to Support Noah's Campaign" class="popup-content">
-        </div>
-    </div>
-     -->
+    <!-- WebGL Canvas will be inserted here by pyramid-scene.js -->
     
+    <!-- Hero Text Overlay -->
+    <div class="hero-text-overlay">
+        <h1 class="pyramid-title">Noah Brambila</h1>
+        <p class="pyramid-subtitle">Developer • Creator</p>
+    </div>
+    <!--
     <header class="sticky-header">
-        <img src="CampaignLogo2.png" alt="Noah Brambila Campaign Logo Header" class="header-logo">
+        <h2 style="color: #ffffff; margin: 0; font-size: 1.5em;">Noah Brambila</h2>
         <button class="hamburger-menu" aria-label="Menu">
             <span></span>
             <span></span>
             <span></span>
         </button>
     </header>
+    -->
     
-    <nav class="menu-panel">
+    <nav class="menu-panel" role="navigation" aria-label="Main navigation">
         <button class="close-menu" aria-label="Close Menu">&times;</button>
         <a href="/about/" class="menu-link">About</a>
-        <a href="/platform/" class="menu-link">Platform</a>
-        <!-- <a href="/showsupport/" class="menu-link">Show Support</a> Popup Modal -->
+        <a href="/platform/" class="menu-link">Projects</a>
     </nav>
     
-    <section class="hero-section">
-        <div class="hero-content">
-            <img src="CampaignLogo1.png" alt="Noah Brambila Campaign Logo" class="hero-logo">
-            <h1>Noah is running for re-election to ASB.</h1>
+    <!-- Portfolio Content Section -->
+    <div class="portfolio-overlay">
+        <div class="portfolio-content">
+            <h3>On This Day | Chrome Extension</h3>
+            <p>On This Day is a Chrome extension that displays past historical events on the current day. It works every day of the week, and gets its information via Wikipedia.</p>
+            <p>Learn about the history of <b><span id="current-date-2" aria-live="polite"></span></b> with this extension.</p>
+            <a href="https://github.com/noahbrambila/OnThisDay" class="about-btn" target="_blank" rel="noopener noreferrer">View on Github</a>
         </div>
-    </section>
-    
-    <section class="about-section">
-        <div class="about-content">
-            <h3>Meet Rep. Noah Brambila</h3>
-            <p>Two-Time ASB Representative Noah has served in our Student Body for <b>over a year</b> now, and is planning to continue dedicating himself to his fellow peers. When running, voters have felt confident in his ability to represent them effectively. While in ASB, he has contributed to school-wide 4 dances, our schools <i>25th anniversary</i>, and many other projects that helped our community and students. While in <i>Community Service Club</i>, he has helped create, plan, and execute ideas. After his latest semester term in ASB, he has decided to run again to represent his grade and fellow scholars.</p>
-            <p>Noah is a confident leader, planner, and do-er, always ready to take on the next challenge.</p>
-            <a href="/about/" class="about-btn">Learn More About Noah</a>
-            <p><small>M.O. Stevens, CC BY-SA 3.0 <a href="https://creativecommons.org/licenses/by-sa/3.0" target="_blank" rel="noopener noreferrer">https://creativecommons.org/licenses/by-sa/3.0</a>, via Wikimedia Commons</small></p>
-        </div>
-        <div class="about-image">
-            <a title="M.O. Stevens, CC BY-SA 3.0 &lt;https://creativecommons.org/licenses/by-sa/3.0&gt;, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:Federal_Way_Public_Academy_-_Washington.JPG" target="_blank" rel="noopener noreferrer"><img width="512" alt="Federal Way Public Academy - Washington" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Federal_Way_Public_Academy_-_Washington.JPG/512px-Federal_Way_Public_Academy_-_Washington.JPG?20140617054401"></a>
-        </div>
-    </section>
-    
-    <section class="accomplishments-section">
-        <h2>Key Accomplishments</h2>
-        <ul>
-            <li>Organized our schools 25th anniversary</li>
-            <li>Developed school-wide events</li>
-            <li>Delivered on 4 dances</li>
-        </ul>
-    </section>
-    
-    <section class="platform-section">
-        <h2>Noah's Platform</h2>
-        <div class="platform-items">
-            <div class="platform-item">
-                <div class="platform-header">
-                    <span class="platform-title">Organization and Event Strategy  🎉</span>
-                    <span class="caret">▼</span>
-                </div>
-                <div class="platform-content">
-                    <p>Working on dances until the last minute isn't a <i>choice.</i> It's a product of bad coordination.</p>
-                    <a href="/platform/">➡️</a>
-                </div>
-            </div>
-            <div class="platform-item">
-                <div class="platform-header">
-                    <span class="platform-title">Peer Feedback and Support  🗣️</span>
-                    <span class="caret">▼</span>
-                </div>
-                <div class="platform-content">
-                    <p>We are creating experience for our students, so why not listen to them?</p>
-                    <a href="/platform/">➡️</a>
-                </div>
-            </div>
-            <div class="platform-item">
-                <div class="platform-header">
-                    <span class="platform-title">Incentives and Involvement  ✋</span>
-                    <span class="caret">▼</span>
-                </div>
-                <div class="platform-content">
-                    <p>Student involvement is critical to any school, small incentives can help.</p>
-                    <a href="/platform/">➡️</a>
-                </div>
-            </div>
-        </div>
-    </section>
+    </div>
     
     <footer>
-        <p>Noah Brambila for ASB / Created by Noah / <a href="https://wehtt.am/fonts/" target="_blank" rel="noopener noreferrer">Font by Matthew Hinders-Anderson</a></p>
+        <p>Created by Noah / Home</p>
+        <p>This work is based on "Aztec Pyramid" (https://sketchfab.com/3d-models/aztec-pyramid-69b83dbcff70435485e449f47a87cb5d) by rhcreations (https://sketchfab.com/rhcreations) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)</p>
         <div id="google_translate_element"></div>
     </footer>
     
@@ -129,7 +82,8 @@
       }, 'google_translate_element');
     }
     </script>
-    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-    <script src="script.js"></script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
+    <script src="pyramid-scene.js" defer></script>
+    <script src="script.js" defer></script>
 </body>
 </html>
