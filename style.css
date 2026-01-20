@@ -13,6 +13,141 @@ body {
     background-color: #ffffff;
     color: #2C1810;
     line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* WebGL Canvas Styles - Fixed background layer */
+#pyramid-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 0;
+    display: block;
+}
+
+/* Hero Text Overlay for 3D Scene - scrollable content */
+.hero-text-overlay {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    z-index: 10;
+    pointer-events: none;
+    text-align: left;
+    padding: 2em 10%;
+    box-sizing: border-box;
+}
+
+.pyramid-title {
+    font-family: 'Union Gothic', Georgia, 'Times New Roman', serif;
+    font-size: clamp(3em, 8vw, 6em);
+    font-weight: 700;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+    animation: fadeInTitle 2s ease-out;
+    max-width: 45%;
+    text-align: left;
+}
+
+.pyramid-subtitle {
+    font-family: 'Union Gothic', Georgia, 'Times New Roman', serif;
+    font-size: clamp(1.2em, 3vw, 1.8em);
+    font-weight: 400;
+    color: #c1ff72;
+    letter-spacing: 0.05em;
+    margin-top: 1em;
+    margin-left: 0;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+    animation: fadeInSubtitle 2s ease-out 0.5s both;
+    max-width: 45%;
+    text-align: left !important;
+    align-self: flex-start;
+}
+
+@keyframes fadeInTitle {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInSubtitle {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Portfolio content section - normal scrollable content */
+.portfolio-overlay {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 4em 10%;
+    box-sizing: border-box;
+}
+
+.portfolio-content {
+    max-width: 800px;
+    text-align: left;
+}
+
+.portfolio-content h3 {
+    font-family: 'Union Gothic', Georgia, 'Times New Roman', serif;
+    font-size: 2.5em;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 1em;
+    letter-spacing: 0.02em;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
+}
+
+.portfolio-content p {
+    font-size: 1.2em;
+    line-height: 1.8;
+    color: #ffffff;
+    margin-bottom: 1.5em;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
+}
+
+.portfolio-content b {
+    color: #c1ff72;
+    font-weight: 700;
+}
+
+.portfolio-content i {
+    color: #E8DCC8;
+    font-style: italic;
+}
+
+/* Scroll spacer - removed, not needed */
+.scroll-spacer {
+    display: none;
+}
+
+footer {
+    position: relative;
+    z-index: 10;
 }
 
 .sticky-header {
@@ -44,6 +179,15 @@ body {
     height: 80px;
     width: auto;
     max-width: 400px;
+}
+
+.sticky-header h2 a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.sticky-header h2 a:hover {
+    color: #E8DCC8;
 }
 
 .hamburger-menu {
@@ -239,9 +383,9 @@ b {
 
 footer {
     width: 100%;
-    padding: 1.5em 2em;
-    background-color: #000000;
-    border-top: 3px solid #ffffff;
+    padding: 3em 2em 1.5em 2em;
+    background: linear-gradient(to top, #000000 0%, rgba(0, 0, 0, 0.9) 30%, rgba(0, 0, 0, 0.5) 70%, transparent 100%);
+    border-top: none;
     margin-top: auto;
     display: flex;
     justify-content: space-between;
@@ -285,6 +429,7 @@ footer p {
     }
 }
 
+/* Legacy about section styles (kept for other pages) */
 .about-section {
     display: flex;
     align-items: center;
@@ -602,5 +747,57 @@ footer p {
     .about-image img {
         width: 250px;
         height: 250px;
+    }
+    
+    .pyramid-title {
+        font-size: clamp(2em, 10vw, 3.5em);
+        max-width: 100%;
+    }
+    
+    .pyramid-subtitle {
+        font-size: clamp(0.9em, 4vw, 1.2em);
+        letter-spacing: 0.05em;
+        max-width: 100%;
+    }
+    
+    .hero-text-overlay {
+        padding: 1.5em 5%;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .portfolio-content {
+        padding: 2em 1em;
+    }
+    
+    .portfolio-content h3 {
+        font-size: 1.8em;
+    }
+    
+    .portfolio-content p {
+        font-size: 1em;
+    }
+}
+
+/* Mobile optimization for WebGL scene */
+@media (max-width: 480px) {
+    .hero-text-overlay {
+        padding: 1em;
+    }
+    
+    .pyramid-title {
+        font-size: 2em;
+    }
+    
+    .pyramid-subtitle {
+        font-size: 0.85em;
+    }
+}
+
+/* Reduce animations on low-performance devices */
+@media (prefers-reduced-motion: reduce) {
+    .pyramid-title,
+    .pyramid-subtitle {
+        animation: none;
     }
 }
