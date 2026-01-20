@@ -1,0 +1,11 @@
+Model Information:
+* title:	Aztec Pyramid
+* source:	https://sketchfab.com/3d-models/aztec-pyramid-69b83dbcff70435485e449f47a87cb5d
+* author:	rhcreations (https://sketchfab.com/rhcreations)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Aztec Pyramid" (https://sketchfab.com/3d-models/aztec-pyramid-69b83dbcff70435485e449f47a87cb5d) by rhcreations (https://sketchfab.com/rhcreations) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

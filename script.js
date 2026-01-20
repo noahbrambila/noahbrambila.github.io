@@ -1,3 +1,18 @@
+// Update current date dynamically
+document.addEventListener('DOMContentLoaded', function() {
+    const dateSpan = document.getElementById('current-date');
+    const dateSpan2 = document.getElementById('current-date-2');
+    
+    if (dateSpan || dateSpan2) {
+        const now = new Date();
+        const options = { month: 'long', day: 'numeric' };
+        const formattedDate = now.toLocaleDateString('en-US', options);
+        
+        if (dateSpan) dateSpan.textContent = formattedDate;
+        if (dateSpan2) dateSpan2.textContent = formattedDate;
+    }
+});
+
 // Popup Modal functionality
 window.addEventListener('load', function() {
     const popup = document.getElementById('popup-modal');
