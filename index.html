@@ -26,20 +26,14 @@
     
     <link rel="stylesheet" href="style.css">
     
-    <!-- Three.js Library - defer for non-blocking -->
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <!-- Three.js GLTF Loader -->
-    <script defer src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
 </head>
 <body>
-    <!-- WebGL Canvas will be inserted here by pyramid-scene.js -->
-    
     <!-- Hero Text Overlay -->
     <div class="hero-text-overlay">
-        <h1 class="pyramid-title">Noah Brambila</h1>
-        <p class="pyramid-subtitle">Developer • Creator</p>
+        <h1 class="hero-title">Noah Brambila</h1>
+        <p class="hero-subtitle">Developer • Student</p>
     </div>
-    <!--
+
     <header class="sticky-header">
         <h2 style="color: #ffffff; margin: 0; font-size: 1.5em;">Noah Brambila</h2>
         <button class="hamburger-menu" aria-label="Menu">
@@ -48,7 +42,7 @@
             <span></span>
         </button>
     </header>
-    -->
+
     
     <nav class="menu-panel" role="navigation" aria-label="Main navigation">
         <button class="close-menu" aria-label="Close Menu">&times;</button>
@@ -56,19 +50,8 @@
         <a href="/platform/" class="menu-link">Projects</a>
     </nav>
     
-    <!-- Portfolio Content Section -->
-    <div class="portfolio-overlay">
-        <div class="portfolio-content">
-            <h3>On This Day | Chrome Extension</h3>
-            <p>On This Day is a Chrome extension that displays past historical events on the current day. It works every day of the week, and gets its information via Wikipedia.</p>
-            <p>Learn about the history of <b><span id="current-date-2" aria-live="polite"></span></b> with this extension.</p>
-            <a href="https://github.com/noahbrambila/OnThisDay" class="about-btn" target="_blank" rel="noopener noreferrer">View on Github</a>
-        </div>
-    </div>
-    
     <footer>
         <p>Created by Noah / Home</p>
-        <p>This work is based on "Aztec Pyramid" (https://sketchfab.com/3d-models/aztec-pyramid-69b83dbcff70435485e449f47a87cb5d) by rhcreations (https://sketchfab.com/rhcreations) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)</p>
         <div id="google_translate_element"></div>
     </footer>
     
@@ -83,7 +66,6 @@
     }
     </script>
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
-    <script src="pyramid-scene.js" defer></script>
     <script src="script.js" defer></script>
 </body>
 </html>
