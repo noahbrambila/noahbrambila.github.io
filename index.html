@@ -8,10 +8,10 @@
     <title>Noah Brambila</title>
     
     <!-- Favicons -->
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="icon" href="favicon.svg" type="image/svg+xml">
-    <link rel="icon" type="image/png" sizes="192x192" href="favicon.png">
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link id="favicon-ico" rel="icon" type="image/x-icon" href="favicon.ico">
+    <link id="favicon-svg" rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link id="favicon-png" rel="icon" type="image/png" sizes="192x192" href="favicon.png">
+    <link id="favicon-apple" rel="apple-touch-icon" href="apple-touch-icon.png">
     
     <!-- Open Graph / Social Media -->
     <meta property="og:title" content="Noah Brambila - Portfolio">
@@ -22,20 +22,98 @@
 
     <!-- Preload critical resources -->
     <link rel="preload" href="union_gothic-variable.ttf" as="font" type="font/ttf" crossorigin>
-    <link rel="preload" href="style.css" as="style">
-    
     <link rel="stylesheet" href="style.css">
+    <meta name="theme-color" id="theme-color-meta" content="#004aad">
+
+    <script>
+    (function() {
+        const storageKey = 'site-skin';
+        const skins = {
+            developer: 'skins/developer.css',
+            uw: 'skins/uw.css'
+        };
+        const favicons = {
+            developer: {
+                ico: 'favicon.ico',
+                svg: 'favicon.svg',
+                png: 'favicon.png',
+                apple: 'apple-touch-icon.png'
+            },
+            uw: {
+                ico: 'skins/favicons/uwfavicon.ico',
+                svg: 'skins/favicons/uwfavicon.svg',
+                png: 'skins/favicons/uwfavicon.png',
+                apple: 'apple-touch-icon.png'
+            }
+        };
+
+        function applyFavicons(skinId) {
+            const activeFavicons = favicons[skinId] || favicons.developer;
+            const iconMap = {
+                'favicon-ico': activeFavicons.ico,
+                'favicon-svg': activeFavicons.svg,
+                'favicon-png': activeFavicons.png,
+                'favicon-apple': activeFavicons.apple
+            };
+
+            Object.entries(iconMap).forEach(([id, href]) => {
+                const link = document.getElementById(id);
+                if (link) {
+                    link.href = href;
+                }
+            });
+        }
+
+        let activeSkin = 'developer';
+
+        try {
+            const storedSkin = window.localStorage.getItem(storageKey);
+            if (storedSkin && skins[storedSkin]) {
+                activeSkin = storedSkin;
+            } else {
+                window.localStorage.setItem(storageKey, activeSkin);
+            }
+        } catch (error) {
+            activeSkin = 'developer';
+        }
+
+        document.documentElement.dataset.skin = activeSkin;
+        window.__initialSkin = activeSkin;
+    applyFavicons(activeSkin);
+
+        const skinLink = document.createElement('link');
+        skinLink.id = 'skin-stylesheet';
+        skinLink.rel = 'stylesheet';
+        skinLink.href = skins[activeSkin];
+        skinLink.onerror = function() {
+            if (activeSkin !== 'developer') {
+                window.localStorage.setItem(storageKey, 'developer');
+                skinLink.href = skins.developer;
+                document.documentElement.dataset.skin = 'developer';
+            }
+        };
+        document.head.appendChild(skinLink);
+    })();
+    </script>
     
 </head>
 <body>
     <!-- Hero Text Overlay -->
     <div class="hero-text-overlay">
         <h1 class="hero-title">Noah Brambila</h1>
-        <p class="hero-subtitle">Developer • Student</p>
+        <p class="hero-subtitle">Creator • Student</p>
+        <div class="skin-picker" role="group" aria-label="Choose a website skin">
+            <span class="skin-picker-label">Choose a skin</span>
+            <span class="skin-picker-current" id="active-skin-label">Developer skin</span>
+            <div class="skin-picker-options">
+                <button type="button" class="skin-option" data-skin="developer" aria-pressed="true">Developer</button>
+                <button type="button" class="skin-option" data-skin="uw" aria-pressed="false">UW</button>
+            </div>
+        </div>
     </div>
 
     <header class="sticky-header">
-        <h2 style="color: #ffffff; margin: 0; font-size: 1.5em;">Noah Brambila</h2>
+        <h2 class="sticky-header-title">Noah Brambila</h2>
         <button class="hamburger-menu" aria-label="Menu">
             <span></span>
             <span></span>
