@@ -8,10 +8,10 @@
     <title>Noah Brambila</title>
     
     <!-- Favicons -->
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="icon" href="favicon.svg" type="image/svg+xml">
-    <link rel="icon" type="image/png" sizes="192x192" href="favicon.png">
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link id="favicon-ico" rel="icon" type="image/x-icon" href="favicon.ico">
+    <link id="favicon-svg" rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link id="favicon-png" rel="icon" type="image/png" sizes="192x192" href="favicon.png">
+    <link id="favicon-apple" rel="apple-touch-icon" href="apple-touch-icon.png">
     
     <!-- Open Graph / Social Media -->
     <meta property="og:title" content="Noah Brambila - Portfolio">
@@ -22,53 +22,132 @@
 
     <!-- Preload critical resources -->
     <link rel="preload" href="union_gothic-variable.ttf" as="font" type="font/ttf" crossorigin>
-    <link rel="preload" href="style.css" as="style">
-    
     <link rel="stylesheet" href="style.css">
+    <meta name="theme-color" id="theme-color-meta" content="#004aad">
+
+    <script>
+    (function() {
+        const storageKey = 'site-skin';
+        const skins = {
+            developer: 'skins/developer.css',
+            dreamer: 'skins/dreamer.css',
+            uw: 'skins/uw.css'
+        };
+        const themeColors = {
+            developer: '#004aad',
+            dreamer: '#a31f34',
+            uw: '#4b2e83'
+        };
+        const favicons = {
+            developer: {
+                ico: 'favicon.ico',
+                svg: 'favicon.svg',
+                png: 'favicon.png',
+                apple: 'apple-touch-icon.png'
+            },
+            dreamer: {
+                ico: 'skins/favicons/mitfavicon.ico',
+                svg: 'skins/favicons/mitfavicon.svg',
+                png: 'skins/favicons/mitfavicon.png',
+                apple: 'apple-touch-icon.png'
+            },
+            uw: {
+                ico: 'skins/favicons/uwfavicon.ico',
+                svg: 'skins/favicons/uwfavicon.svg',
+                png: 'skins/favicons/uwfavicon.png',
+                apple: 'apple-touch-icon.png'
+            }
+        };
+
+        function applyFavicons(skinId) {
+            const activeFavicons = favicons[skinId] || favicons.developer;
+            const iconMap = {
+                'favicon-ico': activeFavicons.ico,
+                'favicon-svg': activeFavicons.svg,
+                'favicon-png': activeFavicons.png,
+                'favicon-apple': activeFavicons.apple
+            };
+
+            Object.entries(iconMap).forEach(([id, href]) => {
+                const link = document.getElementById(id);
+                if (link) {
+                    link.href = href;
+                }
+            });
+        }
+
+        let activeSkin = 'developer';
+
+        try {
+            const storedSkin = window.localStorage.getItem(storageKey);
+            if (storedSkin && skins[storedSkin]) {
+                activeSkin = storedSkin;
+            } else {
+                window.localStorage.setItem(storageKey, activeSkin);
+            }
+        } catch (error) {
+            activeSkin = 'developer';
+        }
+
+        document.documentElement.dataset.skin = activeSkin;
+        window.__initialSkin = activeSkin;
+        applyFavicons(activeSkin);
+
+        const themeMeta = document.getElementById('theme-color-meta');
+        if (themeMeta && themeColors[activeSkin]) {
+            themeMeta.setAttribute('content', themeColors[activeSkin]);
+        }
+
+        const skinLink = document.createElement('link');
+        skinLink.id = 'skin-stylesheet';
+        skinLink.rel = 'stylesheet';
+        skinLink.href = skins[activeSkin];
+        skinLink.onerror = function() {
+            if (activeSkin !== 'developer') {
+                window.localStorage.setItem(storageKey, 'developer');
+                skinLink.href = skins.developer;
+                document.documentElement.dataset.skin = 'developer';
+            }
+        };
+        document.head.appendChild(skinLink);
+    })();
+    </script>
     
-    <!-- Three.js Library - defer for non-blocking -->
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <!-- Three.js GLTF Loader -->
-    <script defer src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
 </head>
 <body>
-    <!-- WebGL Canvas will be inserted here by pyramid-scene.js -->
-    
     <!-- Hero Text Overlay -->
     <div class="hero-text-overlay">
-        <h1 class="pyramid-title">Noah Brambila</h1>
-        <p class="pyramid-subtitle">Developer • Creator</p>
+        <h1 class="hero-title">Noah Brambila</h1>
+        <p class="hero-subtitle">Creator • Student</p>
+        <div class="skin-picker" role="group" aria-label="Choose a website skin">
+            <span class="skin-picker-label">Choose a skin</span>
+            <span class="skin-picker-current" id="active-skin-label">Developer skin</span>
+            <div class="skin-picker-options">
+                <button type="button" class="skin-option" data-skin="developer" aria-pressed="true">Developer</button>
+                <button type="button" class="skin-option" data-skin="dreamer" aria-pressed="false">Dreamer</button>
+                <button type="button" class="skin-option" data-skin="uw" aria-pressed="false">UW</button>
+            </div>
+        </div>
     </div>
-    <!--
+
     <header class="sticky-header">
-        <h2 style="color: #ffffff; margin: 0; font-size: 1.5em;">Noah Brambila</h2>
+        <h2 class="sticky-header-title">Noah Brambila</h2>
         <button class="hamburger-menu" aria-label="Menu">
             <span></span>
             <span></span>
             <span></span>
         </button>
     </header>
-    -->
+
     
     <nav class="menu-panel" role="navigation" aria-label="Main navigation">
         <button class="close-menu" aria-label="Close Menu">&times;</button>
-        <a href="/about/" class="menu-link">About</a>
-        <a href="/platform/" class="menu-link">Projects</a>
+        <a href="/error/index.html" class="menu-link">Coming Soon</a>
+        <a href="/error/index.html" class="menu-link">In Progress</a>
     </nav>
-    
-    <!-- Portfolio Content Section -->
-    <div class="portfolio-overlay">
-        <div class="portfolio-content">
-            <h3>On This Day | Chrome Extension</h3>
-            <p>On This Day is a Chrome extension that displays past historical events on the current day. It works every day of the week, and gets its information via Wikipedia.</p>
-            <p>Learn about the history of <b><span id="current-date-2" aria-live="polite"></span></b> with this extension.</p>
-            <a href="https://github.com/noahbrambila/OnThisDay" class="about-btn" target="_blank" rel="noopener noreferrer">View on Github</a>
-        </div>
-    </div>
     
     <footer>
         <p>Created by Noah / Home</p>
-        <p>This work is based on "Aztec Pyramid" (https://sketchfab.com/3d-models/aztec-pyramid-69b83dbcff70435485e449f47a87cb5d) by rhcreations (https://sketchfab.com/rhcreations) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)</p>
         <div id="google_translate_element"></div>
     </footer>
     
@@ -83,7 +162,6 @@
     }
     </script>
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
-    <script src="pyramid-scene.js" defer></script>
     <script src="script.js" defer></script>
 </body>
 </html>

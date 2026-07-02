@@ -1,0 +1,13 @@
+:root {
+    --site-bg: #004aad;
+    --site-surface: #004aad;
+    --site-text: #ffffff;
+    --site-accent: #c1ff72;
+    --site-muted: #E8DCC8;
+    --site-shadow: rgba(0, 0, 0, 0.3);
+    --site-font-body: Georgia, 'Times New Roman', serif;
+    --site-font-display: 'Union Gothic', Georgia, 'Times New Roman', serif;
+    --site-font-ui: 'Union Gothic', Georgia, 'Times New Roman', serif;
+    --site-font-heading: 'Union Gothic', Georgia, 'Times New Roman', serif;
+    --site-font-footer: Georgia, 'Times New Roman', serif;
+}
