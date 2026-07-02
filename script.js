@@ -5,6 +5,11 @@ const SKIN_REGISTRY = {
         href: 'skins/developer.css',
         themeColor: '#004aad'
     },
+    dreamer: {
+        label: 'Dreamer skin',
+        href: 'skins/dreamer.css',
+        themeColor: '#a31f34'
+    },
     uw: {
         label: 'UW skin',
         href: 'skins/uw.css',
@@ -56,6 +61,12 @@ function updateFavicons(skinId) {
             'favicon-ico': 'favicon.ico',
             'favicon-svg': 'favicon.svg',
             'favicon-png': 'favicon.png',
+            'favicon-apple': 'apple-touch-icon.png'
+        },
+        dreamer: {
+            'favicon-ico': 'skins/favicons/mitfavicon.ico',
+            'favicon-svg': 'skins/favicons/mitfavicon.svg',
+            'favicon-png': 'skins/favicons/mitfavicon.png',
             'favicon-apple': 'apple-touch-icon.png'
         },
         uw: {

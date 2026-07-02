@@ -30,13 +30,25 @@
         const storageKey = 'site-skin';
         const skins = {
             developer: 'skins/developer.css',
+            dreamer: 'skins/dreamer.css',
             uw: 'skins/uw.css'
+        };
+        const themeColors = {
+            developer: '#004aad',
+            dreamer: '#a31f34',
+            uw: '#4b2e83'
         };
         const favicons = {
             developer: {
                 ico: 'favicon.ico',
                 svg: 'favicon.svg',
                 png: 'favicon.png',
+                apple: 'apple-touch-icon.png'
+            },
+            dreamer: {
+                ico: 'skins/favicons/mitfavicon.ico',
+                svg: 'skins/favicons/mitfavicon.svg',
+                png: 'skins/favicons/mitfavicon.png',
                 apple: 'apple-touch-icon.png'
             },
             uw: {
@@ -79,7 +91,12 @@
 
         document.documentElement.dataset.skin = activeSkin;
         window.__initialSkin = activeSkin;
-    applyFavicons(activeSkin);
+        applyFavicons(activeSkin);
+
+        const themeMeta = document.getElementById('theme-color-meta');
+        if (themeMeta && themeColors[activeSkin]) {
+            themeMeta.setAttribute('content', themeColors[activeSkin]);
+        }
 
         const skinLink = document.createElement('link');
         skinLink.id = 'skin-stylesheet';
@@ -107,6 +124,7 @@
             <span class="skin-picker-current" id="active-skin-label">Developer skin</span>
             <div class="skin-picker-options">
                 <button type="button" class="skin-option" data-skin="developer" aria-pressed="true">Developer</button>
+                <button type="button" class="skin-option" data-skin="dreamer" aria-pressed="false">Dreamer</button>
                 <button type="button" class="skin-option" data-skin="uw" aria-pressed="false">UW</button>
             </div>
         </div>
