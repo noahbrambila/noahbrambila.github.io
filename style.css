@@ -132,6 +132,10 @@ body {
     border-color: var(--site-text);
 }
 
+.skin-option.is-shaking {
+    animation: skinShake 0.45s ease-in-out infinite;
+}
+
 @keyframes fadeInTitle {
     from {
         opacity: 0;
@@ -151,6 +155,22 @@ body {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@keyframes skinShake {
+    0%,
+    100% {
+        transform: translateX(0) rotate(0deg);
+    }
+    25% {
+        transform: translateX(-1px) rotate(-0.6deg);
+    }
+    50% {
+        transform: translateX(1px) rotate(0.6deg);
+    }
+    75% {
+        transform: translateX(-1px) rotate(0.4deg);
     }
 }
 
@@ -866,6 +886,10 @@ footer p {
 @media (prefers-reduced-motion: reduce) {
     .hero-title,
     .hero-subtitle {
+        animation: none;
+    }
+
+    .skin-option.is-shaking {
         animation: none;
     }
 }

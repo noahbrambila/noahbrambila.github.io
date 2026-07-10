@@ -82,8 +82,6 @@
             const storedSkin = window.localStorage.getItem(storageKey);
             if (storedSkin && skins[storedSkin]) {
                 activeSkin = storedSkin;
-            } else {
-                window.localStorage.setItem(storageKey, activeSkin);
             }
         } catch (error) {
             activeSkin = 'developer';

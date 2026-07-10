@@ -1,4 +1,5 @@
 const SKIN_STORAGE_KEY = 'site-skin';
+const SKIN_PROMPT_DELAY = 3000;
 const SKIN_REGISTRY = {
     developer: {
         label: 'Developer skin',
@@ -17,6 +18,9 @@ const SKIN_REGISTRY = {
     }
 };
 
+let skinPromptTimer = null;
+let skinPromptButton = null;
+
 function getStoredSkin() {
     try {
         const storedSkin = window.localStorage.getItem(SKIN_STORAGE_KEY);
@@ -31,6 +35,14 @@ function persistSkin(skinId) {
         window.localStorage.setItem(SKIN_STORAGE_KEY, skinId);
     } catch (error) {
         // Ignore storage failures and keep the active skin in-session.
+    }
+}
+
+function hasStoredSkinPreference() {
+    try {
+        return window.localStorage.getItem(SKIN_STORAGE_KEY) !== null;
+    } catch (error) {
+        return false;
     }
 }
 
@@ -102,6 +114,37 @@ function syncSkinButtons(skinId) {
     }
 }
 
+function clearSkinPrompt() {
+    window.clearTimeout(skinPromptTimer);
+    skinPromptTimer = null;
+
+    if (skinPromptButton) {
+        skinPromptButton.classList.remove('is-shaking');
+        skinPromptButton = null;
+    }
+}
+
+function startSkinPrompt() {
+    clearSkinPrompt();
+
+    if (hasStoredSkinPreference()) {
+        return;
+    }
+
+    const skinButtons = Array.from(document.querySelectorAll('.skin-option'));
+
+    skinPromptTimer = window.setTimeout(function() {
+        const availableButtons = skinButtons.filter(button => button.dataset.skin !== window.__activeSkin);
+
+        if (!availableButtons.length || hasStoredSkinPreference()) {
+            return;
+        }
+
+        skinPromptButton = availableButtons[Math.floor(Math.random() * availableButtons.length)];
+        skinPromptButton.classList.add('is-shaking');
+    }, SKIN_PROMPT_DELAY);
+}
+
 function applySkin(skinId, shouldPersist = true) {
     const activeSkin = SKIN_REGISTRY[skinId] ? skinId : 'developer';
     const skinStylesheet = ensureSkinStylesheet();
@@ -130,8 +173,11 @@ function applySkin(skinId, shouldPersist = true) {
 document.addEventListener('DOMContentLoaded', function() {
     applySkin(window.__initialSkin || getStoredSkin(), false);
 
+    startSkinPrompt();
+
     document.querySelectorAll('.skin-option').forEach(button => {
         button.addEventListener('click', function() {
+            clearSkinPrompt();
             applySkin(this.dataset.skin, true);
         });
     });
