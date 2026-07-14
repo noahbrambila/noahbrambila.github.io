@@ -1,0 +1,13 @@
+:root {
+    --site-bg: #ffffff;
+    --site-surface: #002395;
+    --site-text: #002395;
+    --site-accent: #ed2939;
+    --site-muted: #ed2939;
+    --site-shadow: rgba(0, 35, 149, 0.35);
+    --site-font-body: "Segoe UI", Arial, sans-serif;
+    --site-font-display: Georgia, "Times New Roman", serif;
+    --site-font-ui: Georgia, "Times New Roman", serif;
+    --site-font-heading: "Segoe UI", Arial, sans-serif;
+    --site-font-footer: Georgia, "Times New Roman", serif;
+}

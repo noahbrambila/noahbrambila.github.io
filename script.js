@@ -15,6 +15,26 @@ const SKIN_REGISTRY = {
         label: 'UW skin',
         href: 'skins/uw.css',
         themeColor: '#4b2e83'
+    },
+    'argentina-gano': {
+        label: 'Argentina Gano skin',
+        href: 'skins/argentina-gano.css',
+        themeColor: '#75aadb'
+    },
+    'espana-gano': {
+        label: 'Espana Gano skin',
+        href: 'skins/espana-gano.css',
+        themeColor: '#c60b1e'
+    },
+    'england-won': {
+        label: 'England Won skin',
+        href: 'skins/england-won.css',
+        themeColor: '#cf142b'
+    },
+    'la-france-a-gagne': {
+        label: 'La France a Gagné skin',
+        href: 'skins/la-france-a-gagne.css',
+        themeColor: '#002395'
     }
 };
 
@@ -85,6 +105,30 @@ function updateFavicons(skinId) {
             'favicon-ico': 'skins/favicons/uwfavicon.ico',
             'favicon-svg': 'skins/favicons/uwfavicon.svg',
             'favicon-png': 'skins/favicons/uwfavicon.png',
+            'favicon-apple': 'apple-touch-icon.png'
+        },
+        'argentina-gano': {
+            'favicon-ico': 'favicon.ico',
+            'favicon-svg': 'favicon.svg',
+            'favicon-png': 'favicon.png',
+            'favicon-apple': 'apple-touch-icon.png'
+        },
+        'espana-gano': {
+            'favicon-ico': 'favicon.ico',
+            'favicon-svg': 'favicon.svg',
+            'favicon-png': 'favicon.png',
+            'favicon-apple': 'apple-touch-icon.png'
+        },
+        'england-won': {
+            'favicon-ico': 'favicon.ico',
+            'favicon-svg': 'favicon.svg',
+            'favicon-png': 'favicon.png',
+            'favicon-apple': 'apple-touch-icon.png'
+        },
+        'la-france-a-gagne': {
+            'favicon-ico': 'favicon.ico',
+            'favicon-svg': 'favicon.svg',
+            'favicon-png': 'favicon.png',
             'favicon-apple': 'apple-touch-icon.png'
         }
     };
