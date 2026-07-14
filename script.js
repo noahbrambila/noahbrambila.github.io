@@ -216,6 +216,7 @@ function applySkin(skinId, shouldPersist = true) {
 
 const ENGLAND_QUIZ_PASSED_KEY = 'england-quiz-passed';
 const FRANCE_QUIZ_PASSED_KEY = 'france-quiz-passed';
+const ARGENTINA_QUIZ_PASSED_KEY = 'argentina-quiz-passed';
 
 function hasPassedEnglandQuiz() {
     try {
@@ -228,6 +229,21 @@ function hasPassedEnglandQuiz() {
 function markEnglandQuizPassed() {
     try {
         window.localStorage.setItem(ENGLAND_QUIZ_PASSED_KEY, 'true');
+    } catch (error) {
+    }
+}
+
+function hasPassedArgentinaQuiz() {
+    try {
+        return window.localStorage.getItem(ARGENTINA_QUIZ_PASSED_KEY) === 'true';
+    } catch (error) {
+        return false;
+    }
+}
+
+function markArgentinaQuizPassed() {
+    try {
+        window.localStorage.setItem(ARGENTINA_QUIZ_PASSED_KEY, 'true');
     } catch (error) {
     }
 }
@@ -261,6 +277,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 showEnglandQuiz(skinId);
             } else if (skinId === 'la-france-a-gagne' && !hasPassedFranceQuiz()) {
                 showFranceQuiz(skinId);
+            } else if (skinId === 'argentina-gano' && !hasPassedArgentinaQuiz()) {
+                showArgentinaQuiz(skinId);
             } else {
                 applySkin(skinId, true);
             }
@@ -395,6 +413,111 @@ document.addEventListener('DOMContentLoaded', function() {
     overlay.addEventListener('click', function(e) {
         if (e.target === overlay) {
             hideFranceQuiz();
+        }
+    });
+});
+
+// ---------- Argentina quiz ----------
+
+const ARGENTINA_ANSWER = ['M', 'E', 'S', 'S', 'I'];
+let argentinaPendingSkin = null;
+let argentinaQuizLocked = false;
+
+function buildArgentinaGrid() {
+    const grid = document.getElementById('argentina-quiz-grid');
+    if (!grid) return;
+    grid.innerHTML = '';
+    for (let i = 65; i <= 90; i++) {
+        const letter = String.fromCharCode(i);
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'argentina-quiz-letter';
+        btn.textContent = letter;
+        btn.dataset.letter = letter;
+        grid.appendChild(btn);
+    }
+}
+
+function resetArgentinaQuiz() {
+    document.querySelectorAll('.argentina-quiz-letter').forEach(function(btn) {
+        btn.classList.remove('is-selected');
+    });
+    var status = document.getElementById('argentina-quiz-status');
+    if (status) status.textContent = '';
+}
+
+function showArgentinaQuiz(skinId) {
+    var overlay = document.getElementById('argentina-quiz-overlay');
+    if (!overlay || argentinaQuizLocked) return;
+    argentinaPendingSkin = skinId;
+    resetArgentinaQuiz();
+    overlay.classList.add('show');
+}
+
+function hideArgentinaQuiz() {
+    var overlay = document.getElementById('argentina-quiz-overlay');
+    if (!overlay) return;
+    overlay.classList.remove('show');
+    overlay.classList.remove('is-wrong');
+    argentinaPendingSkin = null;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    buildArgentinaGrid();
+
+    var overlay = document.getElementById('argentina-quiz-overlay');
+    if (!overlay) return;
+
+    var selected = [];
+
+    overlay.addEventListener('click', function(e) {
+        var btn = e.target.closest('.argentina-quiz-letter');
+        if (!btn) return;
+        if (argentinaQuizLocked) return;
+
+        var letter = btn.dataset.letter;
+        var expectedIndex = selected.length;
+
+        if (letter !== ARGENTINA_ANSWER[expectedIndex]) {
+            argentinaQuizLocked = true;
+            overlay.classList.remove('is-wrong');
+            void overlay.offsetWidth;
+            overlay.classList.add('is-wrong');
+            selected = [];
+            resetArgentinaQuiz();
+            setTimeout(function() {
+                overlay.classList.remove('is-wrong');
+                overlay.classList.remove('show');
+                argentinaPendingSkin = null;
+                argentinaQuizLocked = false;
+            }, 500);
+            return;
+        }
+
+        btn.classList.add('is-selected');
+        selected.push(letter);
+        var status = document.getElementById('argentina-quiz-status');
+        if (status) status.textContent = selected.join(' ');
+
+        if (selected.length === ARGENTINA_ANSWER.length) {
+            argentinaQuizLocked = true;
+            var skinToApply = argentinaPendingSkin;
+            argentinaPendingSkin = null;
+            markArgentinaQuizPassed();
+            hideArgentinaQuiz();
+            if (skinToApply) {
+                applySkin(skinToApply, true);
+            }
+            setTimeout(function() { argentinaQuizLocked = false; }, 500);
+            selected = [];
+        }
+    });
+
+    overlay.addEventListener('click', function(e) {
+        if (e.target === overlay) {
+            hideArgentinaQuiz();
+            selected = [];
+            resetArgentinaQuiz();
         }
     });
 });

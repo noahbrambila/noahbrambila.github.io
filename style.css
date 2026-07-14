@@ -1096,6 +1096,139 @@ footer p {
     display: none;
 }
 
+/* Argentina Quiz Popup */
+.argentina-quiz-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.argentina-quiz-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.argentina-quiz-content {
+    background-color: #ffffff;
+    padding: 2.5em;
+    border-radius: 15px;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    transform: scale(0.7);
+    transition: transform 0.5s ease;
+}
+
+.argentina-quiz-overlay.show .argentina-quiz-content {
+    transform: scale(1);
+}
+
+.argentina-quiz-overlay.is-wrong .argentina-quiz-content {
+    animation: shake 0.5s ease-in-out;
+}
+
+.argentina-quiz-title {
+    font-family: 'Union Gothic', Georgia, 'Times New Roman', serif;
+    font-size: 2em;
+    font-weight: 700;
+    color: #75aadb;
+    margin-top: 0;
+    margin-bottom: 1em;
+    text-align: center;
+}
+
+.argentina-quiz-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.4em;
+    max-width: 350px;
+    margin: 0 auto;
+}
+
+.argentina-quiz-letter {
+    width: 100%;
+    aspect-ratio: 1;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    background: #fff;
+    font-size: 1.2em;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #75aadb;
+}
+
+.argentina-quiz-letter:hover {
+    border-color: #75aadb;
+    background: #eef4fb;
+}
+
+.argentina-quiz-letter.is-selected {
+    border-color: #75aadb;
+    background: #75aadb;
+    color: #fff;
+    cursor: default;
+}
+
+.argentina-quiz-status {
+    text-align: center;
+    margin-top: 1em;
+    min-height: 1.5em;
+    font-size: 1em;
+    color: #666;
+}
+
+.argentina-quiz-reset {
+    display: block;
+    margin: 1em auto 0;
+    padding: 0.4em 1.2em;
+    border: 2px solid #75aadb;
+    border-radius: 8px;
+    background: transparent;
+    color: #75aadb;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: all 0.2s ease;
+}
+
+.argentina-quiz-reset:hover {
+    background: #75aadb;
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    .argentina-quiz-content {
+        padding: 2em;
+        max-width: 85%;
+    }
+
+    .argentina-quiz-title {
+        font-size: 1.5em;
+    }
+
+    .argentina-quiz-grid {
+        max-width: 280px;
+    }
+
+    .argentina-quiz-letter {
+        font-size: 1em;
+    }
+}
+
 /* Reduce animations on low-performance devices */
 @media (prefers-reduced-motion: reduce) {
     .hero-title,
