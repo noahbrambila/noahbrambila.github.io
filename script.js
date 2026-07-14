@@ -107,29 +107,29 @@ function updateFavicons(skinId) {
             'favicon-png': 'skins/favicons/uwfavicon.png',
             'favicon-apple': 'apple-touch-icon.png'
         },
+        'la-france-a-gagne': {
+            'favicon-ico': 'skins/favicons/francefavicon.png',
+            'favicon-svg': 'skins/favicons/francefavicon.png',
+            'favicon-png': 'skins/favicons/francefavicon.png',
+            'favicon-apple': 'skins/favicons/francefavicon.png'
+        },
         'argentina-gano': {
-            'favicon-ico': 'favicon.ico',
-            'favicon-svg': 'favicon.svg',
-            'favicon-png': 'favicon.png',
-            'favicon-apple': 'apple-touch-icon.png'
+            'favicon-ico': 'skins/favicons/argentinafavicon.png',
+            'favicon-svg': 'skins/favicons/argentinafavicon.png',
+            'favicon-png': 'skins/favicons/argentinafavicon.png',
+            'favicon-apple': 'skins/favicons/argentinafavicon.png'
         },
         'espana-gano': {
-            'favicon-ico': 'favicon.ico',
-            'favicon-svg': 'favicon.svg',
-            'favicon-png': 'favicon.png',
-            'favicon-apple': 'apple-touch-icon.png'
+            'favicon-ico': 'skins/favicons/spainfavicon.png',
+            'favicon-svg': 'skins/favicons/spainfavicon.png',
+            'favicon-png': 'skins/favicons/spainfavicon.png',
+            'favicon-apple': 'skins/favicons/spainfavicon.png'
         },
         'england-won': {
-            'favicon-ico': 'favicon.ico',
-            'favicon-svg': 'favicon.svg',
-            'favicon-png': 'favicon.png',
-            'favicon-apple': 'apple-touch-icon.png'
-        },
-        'la-france-a-gagne': {
-            'favicon-ico': 'favicon.ico',
-            'favicon-svg': 'favicon.svg',
-            'favicon-png': 'favicon.png',
-            'favicon-apple': 'apple-touch-icon.png'
+            'favicon-ico': 'skins/favicons/englandfavicon.png',
+            'favicon-svg': 'skins/favicons/englandfavicon.png',
+            'favicon-png': 'skins/favicons/englandfavicon.png',
+            'favicon-apple': 'skins/favicons/englandfavicon.png'
         }
     };
 
@@ -215,6 +215,7 @@ function applySkin(skinId, shouldPersist = true) {
 }
 
 const ENGLAND_QUIZ_PASSED_KEY = 'england-quiz-passed';
+const FRANCE_QUIZ_PASSED_KEY = 'france-quiz-passed';
 
 function hasPassedEnglandQuiz() {
     try {
@@ -231,6 +232,21 @@ function markEnglandQuizPassed() {
     }
 }
 
+function hasPassedFranceQuiz() {
+    try {
+        return window.localStorage.getItem(FRANCE_QUIZ_PASSED_KEY) === 'true';
+    } catch (error) {
+        return false;
+    }
+}
+
+function markFranceQuizPassed() {
+    try {
+        window.localStorage.setItem(FRANCE_QUIZ_PASSED_KEY, 'true');
+    } catch (error) {
+    }
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     applySkin(window.__initialSkin || getStoredSkin(), false);
 
@@ -243,6 +259,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
             if (skinId === 'england-won' && !hasPassedEnglandQuiz()) {
                 showEnglandQuiz(skinId);
+            } else if (skinId === 'la-france-a-gagne' && !hasPassedFranceQuiz()) {
+                showFranceQuiz(skinId);
             } else {
                 applySkin(skinId, true);
             }
@@ -304,6 +322,79 @@ document.addEventListener('DOMContentLoaded', function() {
     overlay.addEventListener('click', function(e) {
         if (e.target === overlay) {
             hideEnglandQuiz();
+        }
+    });
+});
+
+// ---------- France quiz ----------
+
+let francePendingSkin = null;
+let franceQuizLocked = false;
+
+function showFranceQuiz(skinId) {
+    const overlay = document.getElementById('france-quiz-overlay');
+    if (!overlay || franceQuizLocked) return;
+    francePendingSkin = skinId;
+    overlay.classList.add('show');
+    const input = document.getElementById('france-quiz-input');
+    if (input) {
+        input.value = '';
+        input.focus();
+    }
+}
+
+function hideFranceQuiz() {
+    const overlay = document.getElementById('france-quiz-overlay');
+    if (!overlay) return;
+    overlay.classList.remove('show');
+    overlay.classList.remove('is-wrong');
+    francePendingSkin = null;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const overlay = document.getElementById('france-quiz-overlay');
+    if (!overlay) return;
+
+    function handleFranceSubmit() {
+        if (franceQuizLocked) return;
+        const input = document.getElementById('france-quiz-input');
+        if (!input) return;
+
+        const answer = input.value.trim();
+        if (answer.toLowerCase() === 'mbappe') {
+            franceQuizLocked = true;
+            overlay.classList.remove('is-wrong');
+            const skinToApply = francePendingSkin;
+            francePendingSkin = null;
+            markFranceQuizPassed();
+            hideFranceQuiz();
+            if (skinToApply) {
+                applySkin(skinToApply, true);
+            }
+            setTimeout(function() { franceQuizLocked = false; }, 500);
+        } else {
+            overlay.classList.remove('is-wrong');
+            void overlay.offsetWidth;
+            overlay.classList.add('is-wrong');
+            setTimeout(function() {
+                overlay.classList.remove('is-wrong');
+                overlay.classList.remove('show');
+                francePendingSkin = null;
+            }, 500);
+        }
+    }
+
+    document.getElementById('france-quiz-submit').addEventListener('click', handleFranceSubmit);
+
+    document.getElementById('france-quiz-input').addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+            handleFranceSubmit();
+        }
+    });
+
+    overlay.addEventListener('click', function(e) {
+        if (e.target === overlay) {
+            hideFranceQuiz();
         }
     });
 });
