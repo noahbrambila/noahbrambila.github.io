@@ -882,6 +882,108 @@ footer p {
     }
 }
 
+/* England Quiz Popup */
+.england-quiz-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.england-quiz-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.england-quiz-content {
+    background-color: #ffffff;
+    padding: 2.5em;
+    border-radius: 15px;
+    max-width: 600px;
+    width: 90%;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    transform: scale(0.7);
+    transition: transform 0.5s ease;
+}
+
+.england-quiz-overlay.show .england-quiz-content {
+    transform: scale(1);
+}
+
+.england-quiz-overlay.is-wrong .england-quiz-content {
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+    20%, 40%, 60%, 80% { transform: translateX(10px); }
+}
+
+.england-quiz-title {
+    font-family: 'Union Gothic', Georgia, 'Times New Roman', serif;
+    font-size: 2em;
+    font-weight: 700;
+    color: #cf142b;
+    margin-top: 0;
+    margin-bottom: 1em;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+.england-quiz-images {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+}
+
+.england-quiz-option {
+    border: 3px solid #ddd;
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 0;
+    background: none;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+    overflow: hidden;
+}
+
+.england-quiz-option:hover {
+    border-color: #cf142b;
+    transform: scale(1.05);
+}
+
+.england-quiz-option img {
+    display: block;
+    width: 150px;
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    .england-quiz-content {
+        padding: 2em;
+        max-width: 85%;
+    }
+
+    .england-quiz-option img {
+        width: 100px;
+    }
+
+    .england-quiz-title {
+        font-size: 1.5em;
+    }
+}
+
 /* Reduce animations on low-performance devices */
 @media (prefers-reduced-motion: reduce) {
     .hero-title,

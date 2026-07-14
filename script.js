@@ -214,6 +214,23 @@ function applySkin(skinId, shouldPersist = true) {
     return activeSkin;
 }
 
+const ENGLAND_QUIZ_PASSED_KEY = 'england-quiz-passed';
+
+function hasPassedEnglandQuiz() {
+    try {
+        return window.localStorage.getItem(ENGLAND_QUIZ_PASSED_KEY) === 'true';
+    } catch (error) {
+        return false;
+    }
+}
+
+function markEnglandQuizPassed() {
+    try {
+        window.localStorage.setItem(ENGLAND_QUIZ_PASSED_KEY, 'true');
+    } catch (error) {
+    }
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     applySkin(window.__initialSkin || getStoredSkin(), false);
 
@@ -222,8 +239,72 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.skin-option').forEach(button => {
         button.addEventListener('click', function() {
             clearSkinPrompt();
-            applySkin(this.dataset.skin, true);
+            const skinId = this.dataset.skin;
+
+            if (skinId === 'england-won' && !hasPassedEnglandQuiz()) {
+                showEnglandQuiz(skinId);
+            } else {
+                applySkin(skinId, true);
+            }
         });
+    });
+});
+
+let pendingEnglandSkin = null;
+let englandQuizLocked = false;
+
+function showEnglandQuiz(skinId) {
+    const overlay = document.getElementById('england-quiz-overlay');
+    if (!overlay || englandQuizLocked) return;
+
+    pendingEnglandSkin = skinId;
+    overlay.classList.add('show');
+}
+
+function hideEnglandQuiz() {
+    const overlay = document.getElementById('england-quiz-overlay');
+    if (!overlay) return;
+    overlay.classList.remove('show');
+    overlay.classList.remove('is-wrong');
+    pendingEnglandSkin = null;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const overlay = document.getElementById('england-quiz-overlay');
+    if (!overlay) return;
+
+    overlay.querySelectorAll('.england-quiz-option').forEach(option => {
+        option.addEventListener('click', function() {
+            if (englandQuizLocked) return;
+
+            if (this.dataset.answer === 'correct') {
+                englandQuizLocked = true;
+                overlay.classList.remove('is-wrong');
+                var skinToApply = pendingEnglandSkin;
+                pendingEnglandSkin = null;
+                markEnglandQuizPassed();
+                hideEnglandQuiz();
+                if (skinToApply) {
+                    applySkin(skinToApply, true);
+                }
+                setTimeout(function() { englandQuizLocked = false; }, 500);
+            } else {
+                overlay.classList.remove('is-wrong');
+                void overlay.offsetWidth;
+                overlay.classList.add('is-wrong');
+                setTimeout(function() {
+                    overlay.classList.remove('is-wrong');
+                    overlay.classList.remove('show');
+                    pendingEnglandSkin = null;
+                }, 500);
+            }
+        });
+    });
+
+    overlay.addEventListener('click', function(e) {
+        if (e.target === overlay) {
+            hideEnglandQuiz();
+        }
     });
 });
 
