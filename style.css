@@ -132,6 +132,10 @@ body {
     border-color: var(--site-text);
 }
 
+.skin-option.is-shaking {
+    animation: skinShake 0.45s ease-in-out infinite;
+}
+
 @keyframes fadeInTitle {
     from {
         opacity: 0;
@@ -151,6 +155,22 @@ body {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@keyframes skinShake {
+    0%,
+    100% {
+        transform: translateX(0) rotate(0deg);
+    }
+    25% {
+        transform: translateX(-1px) rotate(-0.6deg);
+    }
+    50% {
+        transform: translateX(1px) rotate(0.6deg);
+    }
+    75% {
+        transform: translateX(-1px) rotate(0.4deg);
     }
 }
 
@@ -862,10 +882,361 @@ footer p {
     }
 }
 
+/* England Quiz Popup */
+.england-quiz-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.england-quiz-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.england-quiz-content {
+    background-color: #ffffff;
+    padding: 2.5em;
+    border-radius: 15px;
+    max-width: 600px;
+    width: 90%;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    transform: scale(0.7);
+    transition: transform 0.5s ease;
+}
+
+.england-quiz-overlay.show .england-quiz-content {
+    transform: scale(1);
+}
+
+.england-quiz-overlay.is-wrong .england-quiz-content {
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+    20%, 40%, 60%, 80% { transform: translateX(10px); }
+}
+
+.england-quiz-title {
+    font-family: 'Union Gothic', Georgia, 'Times New Roman', serif;
+    font-size: 2em;
+    font-weight: 700;
+    color: #cf142b;
+    margin-top: 0;
+    margin-bottom: 1em;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+.england-quiz-images {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+}
+
+.england-quiz-option {
+    border: 3px solid #ddd;
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 0;
+    background: none;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+    overflow: hidden;
+}
+
+.england-quiz-option:hover {
+    border-color: #cf142b;
+    transform: scale(1.05);
+}
+
+.england-quiz-option img {
+    display: block;
+    width: 150px;
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    .england-quiz-content {
+        padding: 2em;
+        max-width: 85%;
+    }
+
+    .england-quiz-option img {
+        width: 100px;
+    }
+
+    .england-quiz-title {
+        font-size: 1.5em;
+    }
+}
+
+/* France Quiz Popup */
+.france-quiz-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.france-quiz-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.france-quiz-content {
+    background-color: #ffffff;
+    padding: 2.5em;
+    border-radius: 15px;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    transform: scale(0.7);
+    transition: transform 0.5s ease;
+}
+
+.france-quiz-overlay.show .france-quiz-content {
+    transform: scale(1);
+}
+
+.france-quiz-overlay.is-wrong .france-quiz-content {
+    animation: shake 0.5s ease-in-out;
+}
+
+.france-quiz-title {
+    font-family: 'Union Gothic', Georgia, 'Times New Roman', serif;
+    font-size: 2em;
+    font-weight: 700;
+    color: #002395;
+    margin-top: 0;
+    margin-bottom: 1em;
+    text-align: center;
+}
+
+.france-quiz-input-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+}
+
+.france-quiz-input {
+    padding: 0.75em 1em;
+    font-size: 1.1em;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 300px;
+    outline: none;
+    transition: border-color 0.3s ease;
+    text-align: center;
+}
+
+.france-quiz-input:focus {
+    border-color: #002395;
+}
+
+.france-quiz-submit {
+    padding: 0.6em 2em;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 8px;
+    background-color: #002395;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.france-quiz-submit:hover {
+    background-color: #001a6e;
+}
+
+.france-quiz-submit:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+    .france-quiz-content {
+        padding: 2em;
+        max-width: 85%;
+    }
+
+    .france-quiz-title {
+        font-size: 1.5em;
+    }
+}
+
+/* Page dimmer behind overlays */
+.france-quiz-dim,
+.england-quiz-dim {
+    display: none;
+}
+
+/* Argentina Quiz Popup */
+.argentina-quiz-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.argentina-quiz-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.argentina-quiz-content {
+    background-color: #ffffff;
+    padding: 2.5em;
+    border-radius: 15px;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    transform: scale(0.7);
+    transition: transform 0.5s ease;
+}
+
+.argentina-quiz-overlay.show .argentina-quiz-content {
+    transform: scale(1);
+}
+
+.argentina-quiz-overlay.is-wrong .argentina-quiz-content {
+    animation: shake 0.5s ease-in-out;
+}
+
+.argentina-quiz-title {
+    font-family: 'Union Gothic', Georgia, 'Times New Roman', serif;
+    font-size: 2em;
+    font-weight: 700;
+    color: #75aadb;
+    margin-top: 0;
+    margin-bottom: 1em;
+    text-align: center;
+}
+
+.argentina-quiz-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.4em;
+    max-width: 350px;
+    margin: 0 auto;
+}
+
+.argentina-quiz-letter {
+    width: 100%;
+    aspect-ratio: 1;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    background: #fff;
+    font-size: 1.2em;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #75aadb;
+}
+
+.argentina-quiz-letter:hover {
+    border-color: #75aadb;
+    background: #eef4fb;
+}
+
+.argentina-quiz-letter.is-selected {
+    border-color: #75aadb;
+    background: #75aadb;
+    color: #fff;
+    cursor: default;
+}
+
+.argentina-quiz-status {
+    text-align: center;
+    margin-top: 1em;
+    min-height: 1.5em;
+    font-size: 1em;
+    color: #666;
+}
+
+.argentina-quiz-reset {
+    display: block;
+    margin: 1em auto 0;
+    padding: 0.4em 1.2em;
+    border: 2px solid #75aadb;
+    border-radius: 8px;
+    background: transparent;
+    color: #75aadb;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: all 0.2s ease;
+}
+
+.argentina-quiz-reset:hover {
+    background: #75aadb;
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    .argentina-quiz-content {
+        padding: 2em;
+        max-width: 85%;
+    }
+
+    .argentina-quiz-title {
+        font-size: 1.5em;
+    }
+
+    .argentina-quiz-grid {
+        max-width: 280px;
+    }
+
+    .argentina-quiz-letter {
+        font-size: 1em;
+    }
+}
+
 /* Reduce animations on low-performance devices */
 @media (prefers-reduced-motion: reduce) {
     .hero-title,
     .hero-subtitle {
+        animation: none;
+    }
+
+    .skin-option.is-shaking {
         animation: none;
     }
 }

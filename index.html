@@ -31,12 +31,20 @@
         const skins = {
             developer: 'skins/developer.css',
             dreamer: 'skins/dreamer.css',
-            uw: 'skins/uw.css'
+            uw: 'skins/uw.css',
+            'argentina-gano': 'skins/argentina-gano.css',
+            'espana-gano': 'skins/espana-gano.css',
+            'england-won': 'skins/england-won.css',
+            'la-france-a-gagne': 'skins/la-france-a-gagne.css'
         };
         const themeColors = {
             developer: '#004aad',
             dreamer: '#a31f34',
-            uw: '#4b2e83'
+            uw: '#4b2e83',
+            'argentina-gano': '#75aadb',
+            'espana-gano': '#c60b1e',
+            'england-won': '#cf142b',
+            'la-france-a-gagne': '#002395'
         };
         const favicons = {
             developer: {
@@ -56,6 +64,30 @@
                 svg: 'skins/favicons/uwfavicon.svg',
                 png: 'skins/favicons/uwfavicon.png',
                 apple: 'apple-touch-icon.png'
+            },
+            'argentina-gano': {
+                ico: 'skins/favicons/argentinafavicon.png',
+                svg: 'skins/favicons/argentinafavicon.png',
+                png: 'skins/favicons/argentinafavicon.png',
+                apple: 'skins/favicons/argentinafavicon.png'
+            },
+            'espana-gano': {
+                ico: 'skins/favicons/spainfavicon.png',
+                svg: 'skins/favicons/spainfavicon.png',
+                png: 'skins/favicons/spainfavicon.png',
+                apple: 'skins/favicons/spainfavicon.png'
+            },
+            'england-won': {
+                ico: 'skins/favicons/englandfavicon.png',
+                svg: 'skins/favicons/englandfavicon.png',
+                png: 'skins/favicons/englandfavicon.png',
+                apple: 'skins/favicons/englandfavicon.png'
+            },
+            'la-france-a-gagne': {
+                ico: 'skins/favicons/francefavicon.png',
+                svg: 'skins/favicons/francefavicon.png',
+                png: 'skins/favicons/francefavicon.png',
+                apple: 'skins/favicons/francefavicon.png'
             }
         };
 
@@ -82,8 +114,6 @@
             const storedSkin = window.localStorage.getItem(storageKey);
             if (storedSkin && skins[storedSkin]) {
                 activeSkin = storedSkin;
-            } else {
-                window.localStorage.setItem(storageKey, activeSkin);
             }
         } catch (error) {
             activeSkin = 'developer';
@@ -127,6 +157,10 @@
                 <button type="button" class="skin-option" data-skin="developer" aria-pressed="true">Developer</button>
                 <button type="button" class="skin-option" data-skin="dreamer" aria-pressed="false">Dreamer</button>
                 <button type="button" class="skin-option" data-skin="uw" aria-pressed="false">UW</button>
+                <button type="button" class="skin-option" data-skin="argentina-gano" aria-pressed="false">Argentina Gano (Limited Edition)</button>
+                <button type="button" class="skin-option" data-skin="espana-gano" aria-pressed="false">Espana Gano (Limited Edition)</button>
+                <button type="button" class="skin-option" data-skin="england-won" aria-pressed="false">England Won (Limited Edition)</button>
+                <button type="button" class="skin-option" data-skin="la-france-a-gagne" aria-pressed="false">La France a Gagné (Limited Edition)</button>
             </div>
         </div>
     </div>
@@ -147,6 +181,41 @@
         <a href="/error/index.html" class="menu-link">In Progress</a>
     </nav>
     
+    <div class="england-quiz-overlay" id="england-quiz-overlay">
+        <div class="england-quiz-content">
+            <p class="england-quiz-title">Prove you're an ENGLAND fan</p>
+            <div class="england-quiz-images">
+                <button type="button" class="england-quiz-option" data-answer="correct">
+                    <img src="england.webp" alt="England flag">
+                </button>
+                <button type="button" class="england-quiz-option" data-answer="wrong">
+                    <img src="scotland.webp" alt="Scotland flag">
+                </button>
+                <button type="button" class="england-quiz-option" data-answer="wrong">
+                    <img src="wales.webp" alt="Wales flag">
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="france-quiz-overlay" id="france-quiz-overlay">
+        <div class="france-quiz-content">
+            <p class="france-quiz-title">Who is the greatest French Dictator?</p>
+            <div class="france-quiz-input-area">
+                <input type="text" class="france-quiz-input" id="france-quiz-input" placeholder="Type your answer..." autocomplete="off">
+                <button type="button" class="france-quiz-submit" id="france-quiz-submit">Submit</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="argentina-quiz-overlay" id="argentina-quiz-overlay">
+        <div class="argentina-quiz-content">
+            <p class="argentina-quiz-title">Pick out the GOAT</p>
+            <div class="argentina-quiz-grid" id="argentina-quiz-grid"></div>
+            <div class="argentina-quiz-status" id="argentina-quiz-status"></div>
+        </div>
+    </div>
+
     <footer>
         <p>Created by Noah / Home</p>
         <div id="google_translate_element"></div>
