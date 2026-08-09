@@ -3,235 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Noah Brambila - Explore my projects and experience in web development.">
+    <meta name="description" content="Noah Brambila">
     <meta name="theme-color" content="#004aad">
     <title>Noah Brambila</title>
-    
-    <!-- Favicons -->
-    <link id="favicon-ico" rel="icon" type="image/x-icon" href="favicon.ico">
-    <link id="favicon-svg" rel="icon" href="favicon.svg" type="image/svg+xml">
-    <link id="favicon-png" rel="icon" type="image/png" sizes="192x192" href="favicon.png">
-    <link id="favicon-apple" rel="apple-touch-icon" href="apple-touch-icon.png">
-    
-    <!-- Open Graph / Social Media -->
-    <meta property="og:title" content="Noah Brambila - Portfolio">
-    <meta property="og:description" content="Explore my projects and experience.">
+
+    <link rel="icon" type="image/png" href="favicons/favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="favicons/favicon.png">
+    <link rel="apple-touch-icon" href="favicons/favicon.png">
+
+    <meta property="og:title" content="Noah Brambila">
+    <meta property="og:description" content="Noah Brambila">
     <meta property="og:url" content="https://noahbrambila.github.io">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
 
-    <!-- Preload critical resources -->
-    <link rel="preload" href="union_gothic-variable.ttf" as="font" type="font/ttf" crossorigin>
-    <link rel="stylesheet" href="style.css">
-    <meta name="theme-color" id="theme-color-meta" content="#004aad">
-
-    <script>
-    (function() {
-        const storageKey = 'site-skin';
-        const skins = {
-            developer: 'skins/developer.css',
-            dreamer: 'skins/dreamer.css',
-            uw: 'skins/uw.css',
-            'argentina-gano': 'skins/argentina-gano.css',
-            'espana-gano': 'skins/espana-gano.css',
-            'england-won': 'skins/england-won.css',
-            'la-france-a-gagne': 'skins/la-france-a-gagne.css'
-        };
-        const themeColors = {
-            developer: '#004aad',
-            dreamer: '#a31f34',
-            uw: '#4b2e83',
-            'argentina-gano': '#75aadb',
-            'espana-gano': '#c60b1e',
-            'england-won': '#cf142b',
-            'la-france-a-gagne': '#002395'
-        };
-        const favicons = {
-            developer: {
-                ico: 'favicon.ico',
-                svg: 'favicon.svg',
-                png: 'favicon.png',
-                apple: 'apple-touch-icon.png'
-            },
-            dreamer: {
-                ico: 'skins/favicons/mitfavicon.ico',
-                svg: 'skins/favicons/mitfavicon.svg',
-                png: 'skins/favicons/mitfavicon.png',
-                apple: 'apple-touch-icon.png'
-            },
-            uw: {
-                ico: 'skins/favicons/uwfavicon.ico',
-                svg: 'skins/favicons/uwfavicon.svg',
-                png: 'skins/favicons/uwfavicon.png',
-                apple: 'apple-touch-icon.png'
-            },
-            'argentina-gano': {
-                ico: 'skins/favicons/argentinafavicon.png',
-                svg: 'skins/favicons/argentinafavicon.png',
-                png: 'skins/favicons/argentinafavicon.png',
-                apple: 'skins/favicons/argentinafavicon.png'
-            },
-            'espana-gano': {
-                ico: 'skins/favicons/spainfavicon.png',
-                svg: 'skins/favicons/spainfavicon.png',
-                png: 'skins/favicons/spainfavicon.png',
-                apple: 'skins/favicons/spainfavicon.png'
-            },
-            'england-won': {
-                ico: 'skins/favicons/englandfavicon.png',
-                svg: 'skins/favicons/englandfavicon.png',
-                png: 'skins/favicons/englandfavicon.png',
-                apple: 'skins/favicons/englandfavicon.png'
-            },
-            'la-france-a-gagne': {
-                ico: 'skins/favicons/francefavicon.png',
-                svg: 'skins/favicons/francefavicon.png',
-                png: 'skins/favicons/francefavicon.png',
-                apple: 'skins/favicons/francefavicon.png'
-            }
-        };
-
-        function applyFavicons(skinId) {
-            const activeFavicons = favicons[skinId] || favicons.developer;
-            const iconMap = {
-                'favicon-ico': activeFavicons.ico,
-                'favicon-svg': activeFavicons.svg,
-                'favicon-png': activeFavicons.png,
-                'favicon-apple': activeFavicons.apple
-            };
-
-            Object.entries(iconMap).forEach(([id, href]) => {
-                const link = document.getElementById(id);
-                if (link) {
-                    link.href = href;
-                }
-            });
-        }
-
-        let activeSkin = 'developer';
-
-        try {
-            const storedSkin = window.localStorage.getItem(storageKey);
-            if (storedSkin && skins[storedSkin]) {
-                activeSkin = storedSkin;
-            }
-        } catch (error) {
-            activeSkin = 'developer';
-        }
-
-        document.documentElement.dataset.skin = activeSkin;
-        window.__initialSkin = activeSkin;
-        applyFavicons(activeSkin);
-
-        const themeMeta = document.getElementById('theme-color-meta');
-        if (themeMeta && themeColors[activeSkin]) {
-            themeMeta.setAttribute('content', themeColors[activeSkin]);
-        }
-
-        const skinLink = document.createElement('link');
-        skinLink.id = 'skin-stylesheet';
-        skinLink.rel = 'stylesheet';
-        skinLink.href = skins[activeSkin];
-        skinLink.onerror = function() {
-            if (activeSkin !== 'developer') {
-                window.localStorage.setItem(storageKey, 'developer');
-                skinLink.href = skins.developer;
-                document.documentElement.dataset.skin = 'developer';
-            }
-        };
-        document.head.appendChild(skinLink);
-    })();
-    </script>
-    
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Hero Text Overlay -->
-    <div class="hero-text-overlay">
-        <h1 class="hero-title">Noah Brambila</h1>
-        <a href="#creator" class="hero-subtitle clickable-subtitle">Creator • Student</a>
 
-        <div class="skin-picker" role="group" aria-label="Choose a website skin">
-            <span class="skin-picker-label">Choose a skin</span>
-            <span class="skin-picker-current" id="active-skin-label">Developer skin</span>
-            <div class="skin-picker-options">
-                <button type="button" class="skin-option" data-skin="developer" aria-pressed="true">Developer</button>
-                <button type="button" class="skin-option" data-skin="dreamer" aria-pressed="false">Dreamer</button>
-                <button type="button" class="skin-option" data-skin="uw" aria-pressed="false">UW</button>
-                <!-- These are going to be fully wiped later, so stop thinking your all sneaky by removing these comments ;) <button type="button" class="skin-option" data-skin="argentina-gano" aria-pressed="false">Argentina Gano (Limited Edition)</button> -->
-                <button type="button" class="skin-option" data-skin="espana-gano" aria-pressed="false">Espana Gano</button>
-                <!-- <button type="button" class="skin-option" data-skin="england-won" aria-pressed="false">England Won (Limited Edition)</button>
-                <button type="button" class="skin-option" data-skin="la-france-a-gagne" aria-pressed="false">La France a Gagné (Limited Edition)</button> -->
-            </div>
-        </div>
-    </div>
+    <h1>August 28th, 2026</h1>
+    <p> Tune in <a href="https://www.youtube.com/@noahbrambila" target="_blank" rel="noopener noreferrer">@noahbrambila</a> on YouTube for a big announcement.</p>
 
-    <header class="sticky-header">
-        <h2 class="sticky-header-title">Noah Brambila</h2>
-        <button class="hamburger-menu" aria-label="Menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-    </header>
-
-    
-    <nav class="menu-panel" role="navigation" aria-label="Main navigation">
-        <button class="close-menu" aria-label="Close Menu">&times;</button>
-        <a href="/error/index.html" class="menu-link">Coming Soon</a>
-        <a href="/error/index.html" class="menu-link">In Progress</a>
-    </nav>
-    
-    <div class="england-quiz-overlay" id="england-quiz-overlay">
-        <div class="england-quiz-content">
-            <p class="england-quiz-title">Prove you're an ENGLAND fan</p>
-            <div class="england-quiz-images">
-                <button type="button" class="england-quiz-option" data-answer="correct">
-                    <img src="england.webp" alt="England flag">
-                </button>
-                <button type="button" class="england-quiz-option" data-answer="wrong">
-                    <img src="scotland.webp" alt="Scotland flag">
-                </button>
-                <button type="button" class="england-quiz-option" data-answer="wrong">
-                    <img src="wales.webp" alt="Wales flag">
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <div class="france-quiz-overlay" id="france-quiz-overlay">
-        <div class="france-quiz-content">
-            <p class="france-quiz-title">Who is the greatest French Dictator?</p>
-            <div class="france-quiz-input-area">
-                <input type="text" class="france-quiz-input" id="france-quiz-input" placeholder="Type your answer..." autocomplete="off">
-                <button type="button" class="france-quiz-submit" id="france-quiz-submit">Submit</button>
-            </div>
-        </div>
-    </div>
-
-    <div class="argentina-quiz-overlay" id="argentina-quiz-overlay">
-        <div class="argentina-quiz-content">
-            <p class="argentina-quiz-title">Pick out the GOAT</p>
-            <div class="argentina-quiz-grid" id="argentina-quiz-grid"></div>
-            <div class="argentina-quiz-status" id="argentina-quiz-status"></div>
-        </div>
-    </div>
-
-    <footer>
-        <p>Created by Noah / Home</p>
-        <div id="google_translate_element"></div>
-    </footer>
-    
-    <script type="text/javascript">
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement({
-        pageLanguage: 'en',
-        includedLanguages: 'es,zh-CN,tl,vi,ko',
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-        autoDisplay: false
-      }, 'google_translate_element');
-    }
-    </script>
-    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
-    <script src="script.js" defer></script>
 </body>
 </html>
