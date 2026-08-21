@@ -21,8 +21,42 @@
 </head>
 <body>
 
+    <div id="video-popup" class="video-popup" role="dialog" aria-modal="true" aria-labelledby="video-popup-title">
+        <div class="video-popup__content">
+            <button id="video-popup-close" class="video-popup__close" type="button" aria-label="Close video">&times;</button>
+            <h2 id="video-popup-title" class="video-popup__title">7 Days to Go</h2>
+            <div class="video-popup__frame-wrap">
+                <iframe
+                    src="https://www.youtube.com/embed/wIe1hgy9K_E"
+                    title="Featured video"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </div>
+
     <h1>August 28th, 2026</h1>
     <p> Tune in <a href="https://www.youtube.com/@noahbrambila" target="_blank" rel="noopener noreferrer">@noahbrambila</a> on YouTube for a big announcement.</p>
+
+    <script>
+        const videoPopup = document.getElementById('video-popup');
+        const closeVideoPopup = document.getElementById('video-popup-close');
+
+        window.addEventListener('load', () => {
+            videoPopup.classList.add('is-open');
+        });
+
+        closeVideoPopup.addEventListener('click', () => {
+            videoPopup.classList.remove('is-open');
+        });
+
+        videoPopup.addEventListener('click', (event) => {
+            if (event.target === videoPopup) {
+                videoPopup.classList.remove('is-open');
+            }
+        });
+    </script>
 
 </body>
 </html>
