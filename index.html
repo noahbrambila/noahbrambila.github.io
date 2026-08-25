@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Noah for ASB</title>
-    
+    <title>Noah Brambila for Gardening Club</title>
+
     <!-- Favicons -->
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="icon" type="image/png" sizes="192x192" href="favicon.png">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    
+
     <!-- Open Graph / Social Media -->
-    <meta property="og:title" content="Noah Brambila for ASB">
-    <meta property="og:description" content="Vote Noah Brambila for ASB Representative. Experience, dedication, and student engagement.">
+    <meta property="og:title" content="Noah Brambila for Gardening Club Executive">
+    <meta property="og:description"
+        content="Vote Noah Brambila for Gardening Club Executive. Experience, dedication, and student engagement.">
     <meta property="og:image" content="https://noahbrambila.github.io/social-preview.png">
     <meta property="og:url" content="https://noahbrambila.github.io">
     <meta property="og:type" content="website">
@@ -21,114 +21,383 @@
     <meta name="twitter:image" content="https://noahbrambila.github.io/social-preview.png">
 
     <link rel="stylesheet" href="style.css">
+    <style>
+        .member-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3em;
+            padding: 3em 10%;
+            background-color: #d3feff;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .member-content {
+            flex: 1;
+            text-align: left;
+        }
+
+        .member-content h1 {
+            color: #1A0F08 !important;
+            font-family: 'Rowdies', 'Union Gothic', Georgia, 'Times New Roman', serif;
+            margin-bottom: 0.5em;
+            letter-spacing: 0.1em;
+        }
+
+        .member-content p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: #2C1810;
+            margin-bottom: 1.5em;
+        }
+
+        .member-form-wrap {
+            flex: 0 0 460px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .signup-card {
+            width: 100%;
+            max-width: 460px;
+            background: #ffffff;
+            border: 7px solid #000000;
+            box-shadow: 8px 8px 0 #000000;
+            padding: 1.2rem 1.2rem 1.4rem;
+            box-sizing: border-box;
+        }
+
+        .signup-header {
+            margin-bottom: 1rem;
+        }
+
+        .bunny-icon {
+            display: block;
+            width: 46px;
+            height: 46px;
+        }
+
+        .signup-form {
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+        }
+
+        .signup-form label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-family: 'Union Gothic', Georgia, 'Times New Roman', serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: #111111;
+        }
+
+        .signup-form label .required {
+            color: #111111;
+        }
+
+        .signup-form input {
+            width: 100%;
+            min-height: 52px;
+            padding: 0.8rem 0.9rem;
+            border: 3px solid #000000;
+            background: rgba(255, 255, 255, 0.85);
+            box-sizing: border-box;
+            font-size: 1rem;
+            color: #111111;
+            transition: box-shadow 0.2s ease, background-color 0.2s ease;
+        }
+
+        .signup-form input:focus {
+            outline: none;
+            background: #ffffff;
+            box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.08);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: 0.9rem;
+            align-items: end;
+        }
+
+        .zip-field {
+            display: flex;
+            flex-direction: column;
+            gap: 0.45rem;
+        }
+
+        .signup-button {
+            appearance: none;
+            border: 3px solid #000000;
+            background: #000000;
+            color: #ffffff;
+            min-height: 52px;
+            padding: 0.75rem 1.25rem;
+            font-family: 'Union Gothic', Georgia, 'Times New Roman', serif;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .signup-button:hover {
+            background: #ffffff;
+            color: #000000;
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 768px) {
+            .member-section {
+                flex-direction: column;
+                text-align: center;
+                gap: 1.5em;
+            }
+
+            .member-content {
+                text-align: center;
+            }
+
+            .member-form-wrap {
+                width: 100%;
+                max-width: 100%;
+                flex-basis: auto;
+            }
+
+            .signup-card {
+                max-width: 100%;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .signup-button {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
+
 <body>
     <!-- Popup Modal -->
     <div id="popup-modal" class="popup-overlay">
         <div class="popup-content">
             <button class="popup-close" aria-label="Close Popup">&times;</button>
-            <h2>Copy & Share!</h2>
-            <img src="qr-code.png" alt="QR Code to Support Noah's Campaign" class="popup-content">
+            <h2>Your Support is Needed!</h2>
+            <!-- Insert Supporter Video Here -->
         </div>
     </div>
-    
+
     <header class="sticky-header">
-        <img src="CampaignLogo2.png" alt="Noah Brambila Campaign Logo Header" class="header-logo">
+        <img src="faviconinverse.png" alt="Noah Brambila Campaign Logo Header" class="header-logo">
         <button class="hamburger-menu" aria-label="Menu">
             <span></span>
             <span></span>
             <span></span>
         </button>
     </header>
-    
+
     <nav class="menu-panel">
         <button class="close-menu" aria-label="Close Menu">&times;</button>
-        <a href="/about/" class="menu-link">About</a>
-        <a href="/platform/" class="menu-link">Platform</a>
-        <!-- <a href="/showsupport/" class="menu-link">Show Support</a> Popup Modal -->
+        <a href="/meetnoah/" class="menu-link">Meet Noah</a>
+        <a href="/whyrun/" class="menu-link">Why Run?</a>
+        <a href="/issues/" class="menu-link">Issues</a>
+        <a href="/showsupport/" class="menu-link">Support Us</a>
     </nav>
-    
+
     <section class="hero-section">
         <div class="hero-content">
+            <!-- Add in Image of Noah behind this text -->
             <img src="CampaignLogo1.png" alt="Noah Brambila Campaign Logo" class="hero-logo">
-            <h1>Noah is running for re-election to ASB.</h1>
+            <h1>Noah is running for Gardening Club Executive.</h1>
         </div>
     </section>
-    
+
     <section class="about-section">
         <div class="about-content">
-            <h3>Meet Rep. Noah Brambila</h3>
-            <p>Two-Time ASB Representative Noah has served in our Student Body for <b>over a year</b> now, and is planning to continue dedicating himself to his fellow peers. When running, voters have felt confident in his ability to represent them effectively. While in ASB, he has contributed to school-wide 4 dances, our schools <i>25th anniversary</i>, and many other projects that helped our community and students. While in <i>Community Service Club</i>, he has helped create, plan, and execute ideas. After his latest semester term in ASB, he has decided to run again to represent his grade and fellow scholars.</p>
-            <p>Noah is a confident leader, planner, and do-er, always ready to take on the next challenge.</p>
-            <a href="/about/" class="about-btn">Learn More About Noah</a>
-            <p><small>M.O. Stevens, CC BY-SA 3.0 <a href="https://creativecommons.org/licenses/by-sa/3.0" target="_blank" rel="noopener noreferrer">https://creativecommons.org/licenses/by-sa/3.0</a>, via Wikimedia Commons</small></p>
+            <h3>Meet Noah Brambila</h3>
+            <p>Noah is an 8th Grade student, regular Gardening Club attendee, and local library volunteer. As a student
+                representative, he's fought to listen to the people who go to his school five days a week: the students.
+                Noah's worked on the largest fundraiser in school history, pushed school pride with the 25th
+                anniversary, and led the charge in bringing new ideas to the dances.</p>
+            <p><b>Now, Noah Brambila is running for Gardening Club Executive to do continue helping the people he
+                    represents.</b></p>
+            <a href="/meetnoah/" class="about-btn">Learn More</a>
         </div>
         <div class="about-image">
-            <a title="M.O. Stevens, CC BY-SA 3.0 &lt;https://creativecommons.org/licenses/by-sa/3.0&gt;, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:Federal_Way_Public_Academy_-_Washington.JPG" target="_blank" rel="noopener noreferrer"><img width="512" alt="Federal Way Public Academy - Washington" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Federal_Way_Public_Academy_-_Washington.JPG/512px-Federal_Way_Public_Academy_-_Washington.JPG?20140617054401"></a>
+            <img src="https://resources.finalsite.net/images/f_auto,q_auto,t_image_size_2/v1705709218/fwpsorg/afhi5lisorqfodzueog5/2024-01-10FWPABuildingFront.jpg"
+                alt="Noah Brambila" class="about-image">
         </div>
     </section>
-    
+
     <section class="accomplishments-section">
         <h2>Key Accomplishments</h2>
         <ul>
-            <li>Organized our schools 25th anniversary</li>
-            <li>Developed school-wide events</li>
-            <li>Delivered on 4 dances</li>
+            <li>Worked on the Biggest Fundraiser in School History</li>
+            <li>Brought in the Largest Donation Amount for Most Recent Gardening Club Fundraiser</li>
+            <li>Implemented Numerous New Dance Ideas Over the Span of 2 Years</li>
         </ul>
     </section>
-    
+
     <section class="platform-section">
         <h2>Noah's Platform</h2>
         <div class="platform-items">
             <div class="platform-item">
                 <div class="platform-header">
-                    <span class="platform-title">Organization and Event Strategy  🎉</span>
+                    <span class="platform-title">New Student-Brainstormed Fundraiser</span>
                     <span class="caret">▼</span>
                 </div>
                 <div class="platform-content">
-                    <p>Working on dances until the last minute isn't a <i>choice.</i> It's a product of bad coordination.</p>
-                    <a href="/platform/">➡️</a>
+                    <p>A great fundraiser can be revolutionary for any club. Let's <u>ask the students</u> what they
+                        want to see.</p>
+                    <a href="/issues/">➡️</a>
                 </div>
             </div>
             <div class="platform-item">
                 <div class="platform-header">
-                    <span class="platform-title">Peer Feedback and Support  🗣️</span>
+                    <span class="platform-title">Earning Community Service Hours with Friends</span>
                     <span class="caret">▼</span>
                 </div>
                 <div class="platform-content">
-                    <p>We are creating experience for our students, so why not listen to them?</p>
-                    <a href="/platform/">➡️</a>
+                    <p>Many members enjoy the opportunity to earn community service hours while spending time with
+                        friends. <u>Lets keep it that way.</u></p>
+                    <a href="/issues/">➡️</a>
                 </div>
             </div>
             <div class="platform-item">
                 <div class="platform-header">
-                    <span class="platform-title">Incentives and Involvement  ✋</span>
+                    <span class="platform-title">Ask Members How We Can Improve</span>
                     <span class="caret">▼</span>
                 </div>
                 <div class="platform-content">
-                    <p>Student involvement is critical to any school, small incentives can help.</p>
-                    <a href="/platform/">➡️</a>
+                    <p>Student involvement is critical to transform a surviving club into a <u>thriving</u> one.</p>
+                    <a href="/issues/">➡️</a>
                 </div>
             </div>
         </div>
     </section>
-    
+
+    <section class="member-section">
+        <div class="member-content">
+            <h1>It's Time to Thrive.</h1>
+            <p>Sign Up to Join Noah Brambila's Campaign for Gardening Club</p>
+        </div>
+        <div class="member-form-wrap">
+            <div class="signup-card" aria-label="Membership signup form">
+                <div class="signup-header">
+                    <svg class="bunny-icon" viewBox="0 0 64 64" aria-hidden="true" role="img">
+                        <rect x="24" y="10" width="16" height="8" fill="#000000" />
+                        <rect x="18" y="18" width="8" height="8" fill="#000000" />
+                        <rect x="38" y="18" width="8" height="8" fill="#000000" />
+                        <rect x="12" y="26" width="8" height="8" fill="#000000" />
+                        <rect x="20" y="26" width="24" height="8" fill="#000000" />
+                        <rect x="44" y="26" width="8" height="8" fill="#000000" />
+                        <rect x="16" y="34" width="10" height="8" fill="#000000" />
+                        <rect x="38" y="34" width="10" height="8" fill="#000000" />
+                        <rect x="22" y="42" width="8" height="8" fill="#000000" />
+                        <rect x="34" y="42" width="8" height="8" fill="#000000" />
+                        <rect x="28" y="18" width="8" height="8" fill="#ffffff" />
+                        <rect x="22" y="30" width="20" height="6" fill="#ffffff" />
+                        <rect x="20" y="36" width="8" height="6" fill="#ffffff" />
+                        <rect x="36" y="36" width="8" height="6" fill="#ffffff" />
+                    </svg>
+                </div>
+                <form class="signup-form" action="#" method="post">
+                    <div>
+                        <label for="firstname">First Name <span class="required" aria-label="required">*</span></label>
+                        <input id="firstname" name="firstname" type="text" required>
+                    </div>
+                    <div>
+                        <label for="email">Email Address <span class="required" aria-label="required">*</span></label>
+                        <input id="email" name="email" type="email" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="zipfield">
+                            <label for="phone">Phone Number <span class="required"
+                                    aria-label="required">*</span></label>
+                            <input id="phone" name="phone" type="tel" autocomplete="tel" required>
+                        </div>
+                        <button class="signup-button" type="submit" id="submitBtn">Sign Up</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
     <footer>
-        <p>Noah Brambila for ASB / Created by Noah / <a href="https://wehtt.am/fonts/" target="_blank" rel="noopener noreferrer">Font by Matthew Hinders-Anderson</a></p>
+        <img src="CampaignLogo1.png" width="300" alt="Noah Brambila Campaign Logo Footer">
+        <p><a href="mailto:electnoahbrambila@gmail.com">Contact Us</a> ; <a href="/showsupport/index.html">Campaign Materials</a>
+            ; <a href="careers.html">Careers</a> ; <a href="https://www.youtube.com/@noahbrambila" target="_blank"
+                rel="noopener noreferrer">YouTube</a></p>
+        <p style="border: 2px solid white; padding: 10px;">PAID FOR BY NOAH BRAMBILA FOR GARDENING CLUB</p>
         <div id="google_translate_element"></div>
     </footer>
-    
+
     <script type="text/javascript">
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement({
-        pageLanguage: 'en',
-        includedLanguages: 'es,zh-CN,tl,vi,ko',
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-        autoDisplay: false
-      }, 'google_translate_element');
-    }
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'es,zh-CN,tl,vi,ko',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
     </script>
-    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script type="text/javascript"
+        src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <script src="script.js"></script>
+
+    <script>
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwiWxTUAQ6mHKNQDT017bPfNb3m1MHrVGhSAku3SH_WPqKOVfGXM05gun0mRxgEurUY/exec";
+
+        const form = document.querySelector(".signup-form");
+        const submitBtn = document.getElementById("submitBtn");
+
+        form.addEventListener("submit", async function (e) {
+            e.preventDefault(); // Stop default form redirect/reload
+
+            // Provide immediate UI feedback
+            const originalText = submitBtn.innerText;
+            submitBtn.disabled = true;
+            submitBtn.innerText = "Submitting...";
+
+            // Extract values matching your HTML IDs
+            const payload = {
+                firstName: document.getElementById("firstname").value.trim(),
+                email: document.getElementById("email").value.trim(),
+                zipCode: document.getElementById("phone").value.trim() // rename to 'phone' if you changed the ID
+            };
+
+            try {
+                await fetch(SCRIPT_URL, {
+                    method: "POST",
+                    mode: "no-cors", // Bypasses Google Apps Script cross-origin redirect limits
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                alert("Thank you for signing up!");
+                form.reset();
+            } catch (error) {
+                console.error("Submission error:", error);
+                alert("Something went wrong. Please try again.");
+            } finally {
+                // Re-enable button
+                submitBtn.disabled = false;
+                submitBtn.innerText = originalText;
+            }
+        });
+    </script>
 </body>
+
 </html>

@@ -1,0 +1,215 @@
+.support-page {
+    background: #ffffff;
+}
+
+.support-intro {
+    padding: 7em 10% 5em;
+    background: #004aad;
+    color: #ffffff;
+    text-align: center;
+}
+
+.support-intro h1 {
+    max-width: 900px;
+    margin: 0 auto 0.35em;
+    font-size: clamp(2.4rem, 7vw, 5.2rem);
+    line-height: 0.98;
+}
+
+.support-kicker,
+.resource-type,
+.resource-link {
+    font-family: 'Union Gothic', Georgia, 'Times New Roman', serif;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.support-kicker {
+    margin: 0 auto 1em;
+    color: #c1ff72;
+    font-size: 0.85em;
+}
+
+.support-lede {
+    max-width: 660px;
+    margin: 0 auto;
+    color: #ffffff;
+    font-size: 1.2em;
+}
+
+.support-intro .about-btn {
+    background: #c1ff72;
+    margin-top: 2em;
+}
+
+.resource-section {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 4.5em 2em;
+}
+
+.video-section {
+    padding-top: 1em;
+    padding-bottom: 5em;
+}
+
+.section-heading {
+    margin-bottom: 1.75em;
+}
+
+.section-heading .support-kicker {
+    margin: 0 0 0.5em;
+    color: #007a46;
+}
+
+.section-heading h2 {
+    margin: 0;
+    color: #1a0f08;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    line-height: 1;
+}
+
+.resource-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5em;
+}
+
+.resource-card {
+    display: flex;
+    min-height: 190px;
+    color: #2c1810;
+    background: #f3fbf8;
+    border: 3px solid #004aad;
+    box-shadow: 7px 7px 0 #004aad;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.resource-card:hover,
+.resource-card:focus-visible {
+    color: #2c1810;
+    background: #e8fff0;
+    box-shadow: 3px 3px 0 #004aad;
+    transform: translate(4px, 4px);
+}
+
+.resource-card:focus-visible {
+    outline: 3px solid #00bf63;
+    outline-offset: 4px;
+}
+
+.resource-thumbnail {
+    display: flex;
+    position: relative;
+    flex: 0 0 38%;
+    min-height: 190px;
+    align-items: center;
+    justify-content: center;
+    padding: 1em;
+    box-sizing: border-box;
+    background-color: #d3feff;
+    background-image: linear-gradient(135deg, rgba(0, 74, 173, 0.12) 25%, transparent 25%, transparent 50%, rgba(0, 74, 173, 0.12) 50%, rgba(0, 74, 173, 0.12) 75%, transparent 75%);
+    background-size: 22px 22px;
+    color: #004aad;
+    text-align: center;
+    font-family: 'Union Gothic', Georgia, 'Times New Roman', serif;
+    font-size: 0.9em;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.resource-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.resource-thumbnail img + span {
+    position: absolute;
+}
+
+.resource-card-body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.35em;
+}
+
+.resource-type {
+    color: #007a46;
+    font-size: 0.68em;
+    line-height: 1.3;
+}
+
+.resource-card h3 {
+    margin: 0.45em 0 0.25em;
+    color: #1a0f08;
+    font-family: 'Union Gothic', Georgia, 'Times New Roman', serif;
+    font-size: 1.45em;
+    line-height: 1.05;
+}
+
+.resource-card p {
+    margin: 0;
+    font-size: 0.95em;
+    line-height: 1.4;
+}
+
+.resource-link {
+    margin-top: auto;
+    padding-top: 1em;
+    color: #004aad;
+    font-size: 0.75em;
+}
+
+.play-mark {
+    display: grid;
+    width: 52px;
+    height: 52px;
+    place-items: center;
+    padding-left: 4px;
+    box-sizing: border-box;
+    border: 3px solid #004aad;
+    border-radius: 50%;
+    font-size: 1.3em;
+}
+
+@media (max-width: 700px) {
+    .support-intro {
+        padding: 5em 1.5em 4em;
+    }
+
+    .support-lede {
+        font-size: 1.05em;
+    }
+
+    .resource-section {
+        padding: 3.5em 1.5em;
+    }
+
+    .resource-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .resource-card {
+        min-height: 165px;
+    }
+
+    .resource-thumbnail {
+        min-height: 165px;
+    }
+}
+
+@media (max-width: 430px) {
+    .resource-card {
+        flex-direction: column;
+    }
+
+    .resource-thumbnail {
+        flex-basis: 145px;
+        min-height: 145px;
+    }
+}

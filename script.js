@@ -2,10 +2,16 @@
 window.addEventListener('load', function() {
     const popup = document.getElementById('popup-modal');
     if (popup) {
-        // Show popup after a short delay for smooth fade-in
-        setTimeout(function() {
-            popup.classList.add('show');
-        }, 300);
+        const popupSeenKey = 'supportPopupLastSeen';
+        const today = new Date().toLocaleDateString();
+
+        if (localStorage.getItem(popupSeenKey) !== today) {
+            // Show popup after a short delay for smooth fade-in
+            setTimeout(function() {
+                popup.classList.add('show');
+                localStorage.setItem(popupSeenKey, today);
+            }, 300);
+        }
         
         // Close popup when clicking the X button
         const closeBtn = popup.querySelector('.popup-close');
@@ -27,6 +33,10 @@ window.addEventListener('load', function() {
 // Sticky header functionality
 window.addEventListener('scroll', function() {
     const header = document.querySelector('.sticky-header');
+    if (!header) {
+        return;
+    }
+
     const scrollPosition = window.scrollY;
     
     // Show header when scrolled down 300px or more
@@ -43,29 +53,30 @@ document.addEventListener('DOMContentLoaded', function() {
     const menuPanel = document.querySelector('.menu-panel');
     const header = document.querySelector('.sticky-header');
     const closeMenu = document.querySelector('.close-menu');
-    
-    hamburger.addEventListener('click', function() {
-        this.classList.toggle('active');
-        menuPanel.classList.toggle('active');
-        header.classList.toggle('menu-open');
-    });
-    
-    // Close menu with the close button
-    closeMenu.addEventListener('click', function() {
-        hamburger.classList.remove('active');
-        menuPanel.classList.remove('active');
-        header.classList.remove('menu-open');
-    });
-    
-    // Close menu when clicking on a menu link
-    const menuLinks = document.querySelectorAll('.menu-link');
-    menuLinks.forEach(link => {
-        link.addEventListener('click', function() {
+    if (hamburger && menuPanel && header && closeMenu) {
+        hamburger.addEventListener('click', function() {
+            this.classList.toggle('active');
+            menuPanel.classList.toggle('active');
+            header.classList.toggle('menu-open');
+        });
+
+        // Close menu with the close button
+        closeMenu.addEventListener('click', function() {
             hamburger.classList.remove('active');
             menuPanel.classList.remove('active');
             header.classList.remove('menu-open');
         });
-    });
+
+        // Close menu when clicking on a menu link
+        const menuLinks = document.querySelectorAll('.menu-link');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                menuPanel.classList.remove('active');
+                header.classList.remove('menu-open');
+            });
+        });
+    }
     
     // Platform accordion functionality
     const platformHeaders = document.querySelectorAll('.platform-header');
