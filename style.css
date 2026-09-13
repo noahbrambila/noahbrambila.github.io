@@ -6,6 +6,17 @@
   font-display: swap;
 }
 
+html,
+body {
+    overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -87,8 +98,8 @@ body {
 .menu-panel {
     position: fixed;
     top: 0;
-    right: -100%;
-    width: 320px;
+    right: 0;
+    width: min(320px, 100%);
     height: 100vh;
     background-color: #004AAD;
     display: flex;
@@ -96,13 +107,14 @@ body {
     padding: 6em 3em 2em;
     gap: 1.5em;
     z-index: 999;
-    transition: right 0.4s ease-in-out;
+    transform: translateX(100%);
+    transition: transform 0.4s ease-in-out;
     box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
     box-sizing: border-box;
 }
 
 .menu-panel.active {
-    right: 0;
+    transform: translateX(0);
 }
 
 .close-menu {
@@ -426,6 +438,7 @@ footer p {
     align-items: center;
     padding: 1em 2em;
     cursor: pointer;
+    min-width: 0;
     transition: all 0.3s ease;
 }
 
@@ -439,6 +452,8 @@ footer p {
     font-weight: 600;
     color: #1A0F08;
     text-align: left;
+    min-width: 0;
+    overflow-wrap: anywhere;
 }
 
 .caret {
@@ -511,6 +526,16 @@ footer p {
     border-left: 5px solid #00bf63;
     text-align: left;
     transition: all 0.3s ease;
+}
+
+iframe {
+    display: block;
+    width: 100%;
+    max-width: 560px;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Popup Modal Styles */
@@ -636,5 +661,10 @@ footer p {
     .about-image img {
         width: 250px;
         height: 250px;
+    }
+
+    .accomplishments-section h2 {
+        font-size: clamp(1.8rem, 8vw, 2.5em);
+        overflow-wrap: anywhere;
     }
 }
