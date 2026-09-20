@@ -11,9 +11,9 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
     <!-- Open Graph / Social Media -->
-    <meta property="og:title" content="Noah Brambila for Gardening Club Executive">
+    <meta property="og:title" content="Noah Brambila for Gardening Club President">
     <meta property="og:description"
-        content="Vote Noah Brambila for Gardening Club Executive. Experience, dedication, and student engagement.">
+        content="Vote Noah Brambila for Gardening Club President. Experience, dedication, and student engagement.">
     <meta property="og:image" content="https://noahbrambila.github.io/social-preview.png">
     <meta property="og:url" content="https://noahbrambila.github.io">
     <meta property="og:type" content="website">
@@ -154,6 +154,171 @@
             transform: translateY(-1px);
         }
 
+        .daily-popup {
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+            display: grid;
+            place-items: center;
+            padding: 1.25rem;
+            background: rgba(0, 0, 0, 0.72);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 220ms ease, visibility 220ms ease;
+        }
+
+        .daily-popup.is-visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .daily-popup-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            width: min(920px, 100%);
+            max-height: min(680px, calc(100vh - 2.5rem));
+            overflow: hidden;
+            background: #ffffff;
+            box-shadow: 0 24px 80px rgba(0, 0, 0, 0.34);
+            transform: translateY(16px) scale(0.98);
+            transition: transform 220ms ease;
+        }
+
+        .daily-popup.is-visible .daily-popup-card {
+            transform: translateY(0) scale(1);
+        }
+
+        .daily-popup-media {
+            min-height: 520px;
+            background: #111111;
+        }
+
+        .daily-popup-media img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .daily-popup-content {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: clamp(2.25rem, 5vw, 3.5rem);
+            background: #ffffff;
+            color: #111111;
+        }
+
+        .daily-popup-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 2rem;
+            height: 2rem;
+            padding: 0;
+            border: 1px solid transparent;
+            background: transparent;
+            color: #111111;
+            font: 300 1.75rem/1 Arial, sans-serif;
+            cursor: pointer;
+        }
+
+        .daily-popup-close:hover,
+        .daily-popup-close:focus-visible {
+            border-color: rgba(17, 17, 17, 0.22);
+            background: #f1f1f1;
+            outline: none;
+        }
+
+        .daily-popup-eyebrow {
+            margin: 0 0 1rem;
+            color: #4d4d4d;
+            font: 700 0.75rem/1.2 Arial, sans-serif;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        .daily-popup-content h2 {
+            max-width: 15ch;
+            margin: 0 0 1rem;
+            color: #111111;
+            font: 800 clamp(2rem, 4vw, 3.25rem)/0.98 'Union Gothic', Arial, sans-serif;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .daily-popup-content > p:not(.daily-popup-eyebrow) {
+            max-width: 34rem;
+            margin: 0 0 2rem;
+            color: #4d4d4d;
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .daily-popup-actions {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.75rem;
+        }
+
+        .daily-popup-actions a {
+            display: grid;
+            min-height: 3.75rem;
+            place-items: center;
+            padding: 0.75rem;
+            border: 2px solid #111111;
+            background: #111111;
+            color: #ffffff;
+            font: 700 0.78rem/1.2 Arial, sans-serif;
+            letter-spacing: 0.08em;
+            text-align: center;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: transform 160ms ease, background 160ms ease, color 160ms ease;
+        }
+
+        .daily-popup-actions a:last-child {
+            background: #ffffff;
+            color: #111111;
+        }
+
+        .daily-popup-actions a:hover,
+        .daily-popup-actions a:focus-visible {
+            transform: translateY(-2px);
+            background: #d3feff;
+            color: #111111;
+            outline: none;
+        }
+
+        @media (max-width: 767px) {
+            .daily-popup {
+                padding: 0.75rem;
+            }
+
+            .daily-popup-card {
+                display: block;
+                max-height: calc(100vh - 1.5rem);
+                overflow-y: auto;
+            }
+
+            .daily-popup-media {
+                height: min(42vh, 300px);
+                min-height: 0;
+            }
+
+            .daily-popup-content {
+                min-height: 330px;
+                padding: 2rem 1.5rem 1.5rem;
+            }
+
+            .daily-popup-content h2 {
+                font-size: clamp(1.8rem, 9vw, 2.6rem);
+            }
+        }
+
         @media (max-width: 768px) {
             .member-section {
                 flex-direction: column;
@@ -188,6 +353,26 @@
 
 <body>
 
+    <div id="daily-popup" class="daily-popup" role="dialog" aria-modal="true" aria-labelledby="daily-popup-title">
+        <div class="daily-popup-card">
+            <div class="daily-popup-media">
+                <img src="https://i.imgur.com/BMiStt6.png" alt="Students gathering at school">
+            </div>
+            <section class="daily-popup-content">
+                <button class="daily-popup-close" type="button" aria-label="Close popup">&times;</button>
+                <p class="daily-popup-eyebrow">Noah Brambila for President</p>
+                <h2 id="daily-popup-title">It's time to thrive.</h2>
+                <p>Help build a more connected, creative, and student-led Gardening Club. See the plan and find your way into the campaign.</p>
+                <nav class="daily-popup-actions" aria-label="Campaign actions">
+                    <a href="https://www.youtube.com/@noahbrambila">View the Channel</a>
+                    <a href="/meetnoah/">Meet Noah</a>
+                    <a href="/showsupport/">Show Support</a>
+                    <a href="/" data-close-daily-popup>Maybe later</a>
+                </nav>
+            </section>
+        </div>
+    </div>
+
     <header class="sticky-header">
         <img src="faviconinverse.png" alt="Noah Brambila Campaign Logo Header" class="header-logo">
         <button class="hamburger-menu" aria-label="Menu">
@@ -209,7 +394,7 @@
         <div class="hero-content">
             <!-- Add in Image of Noah behind this text -->
             <img src="CampaignLogo1.png" alt="Noah Brambila Campaign Logo" class="hero-logo">
-            <h1>Noah is running for Gardening Club Executive.</h1>
+            <h1>Noah is running for Gardening Club President.</h1>
         </div>
     </section>
 
@@ -267,7 +452,7 @@
                 representative, he's fought to listen to the people who go to his school five days a week: the students.
                 Noah's worked on the largest fundraiser in school history, pushed school pride with the 25th
                 anniversary, and led the charge in bringing new ideas to the dances.</p>
-            <p><b>Now, Noah Brambila is running for Gardening Club Executive to do continue helping the people he
+            <p><b>Now, Noah Brambila is running for Gardening Club President to do continue helping the people he
                     represents.</b></p>
             <a href="/meetnoah/" class="about-btn">Learn More</a>
         </div>
@@ -391,6 +576,30 @@
                 // Re-enable button
                 submitBtn.disabled = false;
                 submitBtn.innerText = originalText;
+            }
+        });
+    </script>
+    <script>
+        const dailyPopup = document.getElementById("daily-popup");
+        const dailyPopupClose = dailyPopup.querySelector(".daily-popup-close");
+
+        function closeDailyPopup() {
+            dailyPopup.classList.remove("is-visible");
+            document.body.style.overflow = "";
+        }
+
+        dailyPopup.classList.add("is-visible");
+        document.body.style.overflow = "hidden";
+
+        dailyPopupClose.addEventListener("click", closeDailyPopup);
+        dailyPopup.addEventListener("click", (event) => {
+            if (event.target === dailyPopup) {
+                closeDailyPopup();
+            }
+        });
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape" && dailyPopup.classList.contains("is-visible")) {
+                closeDailyPopup();
             }
         });
     </script>
