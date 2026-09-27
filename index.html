@@ -365,7 +365,7 @@
                 <p>Help build a more connected, creative, and student-led Gardening Club. See the plan and find your way into the campaign.</p>
                 <nav class="daily-popup-actions" aria-label="Campaign actions">
                     <a href="https://www.youtube.com/@noahbrambila">View the Channel</a>
-                    <a href="/meetnoah/">Meet Noah</a>
+                    <a href="/meetnoah/">Vote Noah</a>
                     <a href="/showsupport/">Show Support</a>
                     <a href="/" data-close-daily-popup>Maybe later</a>
                 </nav>
@@ -592,6 +592,10 @@
         document.body.style.overflow = "hidden";
 
         dailyPopupClose.addEventListener("click", closeDailyPopup);
+        dailyPopup.querySelector("[data-close-daily-popup]").addEventListener("click", (event) => {
+            event.preventDefault();
+            closeDailyPopup();
+        });
         dailyPopup.addEventListener("click", (event) => {
             if (event.target === dailyPopup) {
                 closeDailyPopup();
