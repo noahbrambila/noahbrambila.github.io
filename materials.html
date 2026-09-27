@@ -266,6 +266,10 @@
     }
 
     closeButton.addEventListener("click", closePopup);
+    popup.querySelector("[data-close-popup]").addEventListener("click", (event) => {
+      event.preventDefault();
+      closePopup();
+    });
     popup.addEventListener("click", (event) => {
       if (event.target === popup) {
         closePopup();
