@@ -1,0 +1,24 @@
+body {
+    background-image: url('https://i.imgur.com/IZetBRx.png');
+    color: #ffffff;
+}
+
+.text-navy {
+    color: #ffffff !important;
+}
+
+.bg-overlay {
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.3) 40%, transparent 100%);
+}
+
+a {
+    color: #004AAD !important;
+    -webkit-text-stroke: 1px #ffffff;
+    text-shadow: 1px 0 #ffffff, -1px 0 #ffffff, 0 1px #ffffff, 0 -1px #ffffff;
+}
+
+@media (min-width: 1024px) {
+    .bg-overlay {
+        background: linear-gradient(to right, rgba(255, 255, 255, 0.5) 0%, transparent 40%);
+    }
+}
