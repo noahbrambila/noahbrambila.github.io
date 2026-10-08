@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Presidential Office of Noah Brambila</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Rowdies:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        rowdies: ['"Rowdies"', 'cursive', 'sans-serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: '#13193a',
+                        'button-red': '#ee2c3c',
+                        'custom-blue': '#004AAD',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="min-h-screen bg-cover bg-center bg-no-repeat relative text-gray-900 font-sans">
+    <div class="absolute inset-0 bg-overlay pointer-events-none"></div>
+    <main class="relative z-10 w-full min-h-screen flex items-center justify-center px-6 py-16">
+        <div class="flex flex-col items-center text-center w-full max-w-2xl">
+            <p class="font-rowdies text-navy font-normal tracking-[0.25em] text-xs sm:text-sm md:text-base mb-2 uppercase">
+                The Office <span class="lowercase italic font-light tracking-normal mx-1">of</span>
+            </p>
+            <h1 class="font-rowdies text-navy text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-wide leading-tight break-words">
+                This office is currently being worked on. For any requests or inquiries, please contact us directly at <a href="mailto:president@noahbrambila.com">president@noahbrambila.com</a>.
+            </h1>
+        </div>
+    </main>
+</body>
+</html>
